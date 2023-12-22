@@ -16,12 +16,15 @@ import Popper from '@/components/Popper'
 import NotificationMenu from '@/components/NotificationMenu'
 import LanguageMenu from '@/components/LanguageMenu'
 import MenuUser from '@/components/MenuUser'
+import { useSelector } from 'react-redux'
 
 const cx = classNames.bind(styles)
 
 function NavHeader() {
   const notificationMenuRef = useRef()
   const languageMenuRef = useRef()
+
+  const language = useSelector((state) => state.language)
 
   const handleNotificationMouseEnter = () => {
     notificationMenuRef.current.addClass()
@@ -161,7 +164,7 @@ function NavHeader() {
                 >
                   <LanguageIcon className={cx('menu-icon')} />
                   <span className={cx('menu-right-text', 'menu-language-text')}>
-                    Tiếng Việt
+                    {language.language}
                   </span>
                   <ChevronDownIcon className={cx('menu-icon')} />
 
