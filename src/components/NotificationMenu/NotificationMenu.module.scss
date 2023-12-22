@@ -1,0 +1,48 @@
+.wrapper {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 100;
+  transform-origin: 352px -14px;
+  transform: scale(0);
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+
+  &.show {
+    transform: scale(1);
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+  }
+
+  &.mouseEnter {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .title {
+    height: 4rem;
+    width: 100%;
+    padding: 0 1rem;
+    text-transform: capitalize;
+    color: #00000042;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .arrow {
+    position: absolute;
+    width: 2.8rem;
+    height: 1rem;
+    top: -10px;
+    right: 34px;
+    border-bottom: 10px solid rgb(255, 255, 255);
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    z-index: 100;
+  }
+}

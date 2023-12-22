@@ -1,8 +1,26 @@
+import { Route, Routes } from 'react-router-dom'
+import DefaultLayout from './layouts/DefaultLayout'
+import { publicRoutes } from './routes'
+
 function App() {
   return (
     <>
-      <h1>Hello world</h1>
-      <p>Hi</p>
+      <Routes>
+        {publicRoutes.map((route, index) => {
+          const Page = route.component
+          return (
+            <Route
+              key={index}
+              path={route.path}
+              element={
+                <DefaultLayout>
+                  <Page />
+                </DefaultLayout>
+              }
+            />
+          )
+        })}
+      </Routes>
     </>
   )
 }

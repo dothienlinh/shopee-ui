@@ -1,0 +1,38 @@
+.arrow_prev {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+
+  cursor: pointer;
+  width: 2.6rem;
+  height: 2.6rem;
+  background-color: var(--nc-white);
+  border-radius: 50%;
+  box-shadow: 0 1px 1.2rem 0 #0000001f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.6, 1);
+  left: 0;
+  transform: translateX(calc(-50% + 0px)) translateY(-50%);
+
+  .icon {
+    fill: #0000008a;
+    width: 1rem;
+    height: 1rem;
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.6, 1);
+  }
+
+  &.hover {
+    width: 5.2rem;
+    height: 5.2rem;
+    font-size: 2rem;
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.6, 1);
+
+    .icon {
+      width: 2rem;
+      height: 2rem;
+      transition: all 0.1s cubic-bezier(0.4, 0, 0.6, 1);
+    }
+  }
+}

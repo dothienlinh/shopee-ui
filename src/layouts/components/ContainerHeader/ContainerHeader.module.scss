@@ -1,0 +1,14 @@
+.wrapper {
+  height: 8.5rem;
+  padding: 1.6rem 1rem;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo-shopee {
+      fill: var(--nc-white);
+    }
+  }
+}

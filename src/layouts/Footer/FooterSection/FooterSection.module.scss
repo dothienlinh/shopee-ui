@@ -1,0 +1,37 @@
+.footer_section {
+  margin-top: 6rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+
+  &_heading {
+    font-size: 1.4rem;
+    color: var(--nc-black);
+    font-weight: bold;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  &_content {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    line-height: 1.4;
+    color: var(--nc-black);
+  }
+
+  &_link {
+    color: var(--nc-black);
+    font-weight: bold;
+  }
+
+  &_menu {
+    padding-left: 4rem;
+    &_item {
+      list-style-type: disc;
+
+      &::marker {
+        color: #0000008a;
+      }
+    }
+  }
+}

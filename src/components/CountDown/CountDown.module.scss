@@ -1,0 +1,22 @@
+.count_down_timer {
+  display: flex;
+  height: 2rem;
+  gap: 0.4rem;
+
+  .count_down_timer_number {
+    width: 2.8rem;
+    border-radius: 2px;
+    background-color: var(--nc-black);
+
+    .number {
+      display: block;
+      font-size: 1.8rem;
+      color: var(--nc-white);
+      font-weight: 700;
+      line-height: 2rem;
+      text-align: center;
+      letter-spacing: 1px;
+      height: 100%;
+    }
+  }
+}

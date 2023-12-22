@@ -1,0 +1,117 @@
+.footer_main_top {
+  background-color: #fbfbfb;
+  .row_1 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 0.5rem;
+    border-bottom: 1px solid #0000001a;
+
+    .column {
+      .title {
+        margin: 4rem 0 2rem 0;
+        font-size: 1.2rem;
+        color: #000000de;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.6rem;
+
+        p {
+          margin-bottom: 1.2rem;
+
+          .link {
+            color: #000000a6;
+            font-size: 1.2rem;
+            text-decoration: none;
+            text-transform: capitalize;
+            display: flex;
+            align-items: center;
+
+            &:hover {
+              color: #ee4d2d;
+            }
+
+            .icon_link {
+              margin-right: 0.8rem;
+            }
+          }
+        }
+
+        .img_list {
+          display: flex;
+          flex-wrap: wrap;
+
+          .img {
+            height: 3rem;
+            width: 6rem;
+            padding: 0.4rem;
+            margin: 0 0.8rem 0.8rem 0;
+            cursor: pointer;
+            background-color: var(--nc-white);
+            box-shadow: 0 1px 1px #00000033;
+            border-radius: 0.2rem;
+          }
+        }
+
+        .download_shopee {
+          display: flex;
+
+          .link {
+            display: block;
+            border-radius: 0.2rem;
+
+            .qr_code {
+              background-color: var(--nc-white);
+              margin-right: 1.2rem;
+              border-radius: 0.2rem;
+              box-shadow: 0 1px 1px #00000033;
+
+              img {
+                padding: 0.4rem;
+              }
+            }
+          }
+
+          .app_img {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .link {
+              display: block;
+              box-shadow: 0 1px 1px #00000033;
+              border-radius: 0.2rem;
+
+              .app {
+                background-color: var(--nc-white);
+                padding: 0.4rem;
+                border-radius: 0.2rem;
+              }
+            }
+          }
+        }
+      }
+
+      .transport {
+        margin-top: 0;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  .row_2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    padding: 4rem 0;
+
+    p {
+      margin: 0;
+    }
+  }
+}

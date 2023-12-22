@@ -1,3 +1,13 @@
+:root {
+  --nc-white: #fff;
+  --nc-black: #000;
+  --brand-primary-color: #ee4d2d;
+
+  --focus-indicator-spacing: 3px;
+  --focus-indicator-stroke-width: 2px;
+  --focus-indicator-color: #000000de;
+}
+
 *,
 *::after,
 *::before {
@@ -17,12 +27,10 @@ body {
 }
 
 ol,
-ul {
-  display: none;
-}
-
-a {
-  text-decoration: none;
+ul,
+li,
+p {
+  list-style: none;
 }
 
 input::-ms-reveal,
