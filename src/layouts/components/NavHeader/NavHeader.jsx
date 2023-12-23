@@ -23,6 +23,7 @@ const cx = classNames.bind(styles)
 function NavHeader() {
   const notificationMenuRef = useRef()
   const languageMenuRef = useRef()
+  const menuUserRef = useRef()
 
   const language = useSelector((state) => state.language)
 
@@ -40,6 +41,14 @@ function NavHeader() {
 
   const handleLanguageMouseLeave = () => {
     languageMenuRef.current.removeClass()
+  }
+
+  const handleMouseLeaveMenuUser = () => {
+    menuUserRef.current.removeClass()
+  }
+
+  const handleMouseEnterMenuUser = () => {
+    menuUserRef.current.addClass()
   }
 
   return (
@@ -61,7 +70,6 @@ function NavHeader() {
               <div>
                 <Tippy
                   interactive
-                  delay={[0, 200]}
                   placement="bottom-start"
                   render={(attrs) => {
                     return (
@@ -174,21 +182,22 @@ function NavHeader() {
             </li>
             <li className={cx('menu-item', 'menu-user')}>
               <div className={cx('user-name')}>
-                <MenuUser>
-                  <Link
-                    to={'/purchase'}
-                    className={cx('menu-right-text', 'name', 'account')}
-                  >
-                    <div className={cx('avatar')}>
-                      <img
-                        className={cx('avatar-img')}
-                        src={images.avatar}
-                        alt="Avatar"
-                      />
-                    </div>
-                    dothienlinh
-                  </Link>
-                </MenuUser>
+                <Link
+                  to={'/purchase'}
+                  className={cx('menu-right-text', 'name', 'account')}
+                  onMouseEnter={handleMouseEnterMenuUser}
+                  onMouseLeave={handleMouseLeaveMenuUser}
+                >
+                  <div className={cx('avatar')}>
+                    <img
+                      className={cx('avatar-img')}
+                      src={images.avatar}
+                      alt="Avatar"
+                    />
+                  </div>
+                  <span>dothienlinh</span>
+                </Link>
+                <MenuUser ref={menuUserRef} />
               </div>
             </li>
           </ul>

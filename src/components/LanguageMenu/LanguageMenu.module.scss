@@ -37,14 +37,10 @@
         display: inline-block;
 
         &:hover {
-          color: #ee4d2d;
+          color: #ee4d2d !important;
           cursor: pointer;
         }
       }
-
-      // .active_language {
-      //   color: #ee4d2d;
-      // }
     }
   }
 

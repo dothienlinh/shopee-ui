@@ -1,7 +1,5 @@
 export { default } from './images'
 export * from './notification'
-export * from './searchList'
-export * from './cartList'
 export * from './slider'
 export * from './optionList'
 export * from './categoryList'

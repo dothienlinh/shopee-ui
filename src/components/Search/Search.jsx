@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import classNames from 'classnames/bind'
 import styles from './Search.module.scss'
 import { SearchIcon, ShopIcon } from '../Icons'
-import { searchList } from '@/data'
 import Popper from '@/components/Popper'
 import * as searchServices from '@/apiServices'
+import * as getCategories from '@/apiServices'
 
 const cx = classNames.bind(styles)
 
@@ -14,6 +14,7 @@ function Search() {
   const [searchResult, setSearchResult] = useState([])
   const searchResultRef = useRef()
   const [valueInput, setValueInput] = useState('')
+  const [categories, setCategories] = useState([])
 
   const handleFocus = () => {
     outlineRef.current.style.display = 'block'
@@ -33,6 +34,21 @@ function Search() {
 
     fetchApi()
   }, [valueInput])
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      try {
+        const response = await getCategories.getCategories()
+
+        setCategories(response)
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(error)
+      }
+    }
+
+    fetchApi()
+  }, [])
 
   return (
     <div className={cx('wrapper')}>
@@ -98,8 +114,12 @@ function Search() {
       </form>
 
       <div className={cx('search_list')}>
-        {searchList.map((item, index) => (
-          <Link to={'/search'} key={index} className={cx('featured_search')}>
+        {categories.map((item, index) => (
+          <Link
+            to={`/products/category/${item}`}
+            key={index}
+            className={cx('featured_search')}
+          >
             {item}
           </Link>
         ))}

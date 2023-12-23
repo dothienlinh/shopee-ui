@@ -1,26 +1,51 @@
-.user-tippy {
-  width: 16.5rem;
+.wrapper {
+  position: absolute;
+  z-index: 1001;
+  top: calc(100% + 6px);
+  right: 0;
+  transform-origin: 124px -10px;
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
 
-  .item {
-    width: 100%;
-    height: 4rem;
-    color: #000000de;
-    text-decoration: none;
-    padding-left: 1.5rem;
-    display: flex;
-    align-items: center;
+  &.show {
+    transform: scale(1);
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+  }
 
-    &:hover {
-      color: #00bfa5;
+  &:hover {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .user-menu {
+    width: 16.5rem;
+
+    .item {
+      width: 100%;
+      height: 4rem;
+      color: #000000de;
+      text-decoration: none;
+      padding-left: 1.5rem;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: #00bfa5;
+        background-color: #fafafa;
+      }
+    }
+
+    .arrow {
+      width: 2.8rem;
+      height: 1rem;
+      position: absolute;
+      top: -10px;
+      right: 27px;
+      border-bottom: 10px solid rgb(255, 255, 255);
+      border-left: 14px solid transparent;
+      border-right: 14px solid transparent;
     }
   }
-}
-
-.arrow-tippy {
-  width: 2.8rem;
-  height: 1rem;
-  top: -10px;
-  border-bottom: 10px solid rgb(255, 255, 255);
-  border-left: 14px solid transparent;
-  border-right: 14px solid transparent;
 }
