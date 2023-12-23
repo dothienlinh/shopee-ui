@@ -56,14 +56,21 @@
     }
   }
 
-  .featured_search {
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: var(--nc-white);
-    margin: 0.5rem 0;
-    display: inline-block;
-    margin-right: 1.6rem;
-    text-transform: capitalize;
+  .search_list {
+    display: flex;
+    flex-wrap: wrap;
+    height: 2.3rem;
+    overflow-y: clip;
+
+    .featured_search {
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: var(--nc-white);
+      margin: 0.5rem 0;
+      display: inline-block;
+      margin-right: 1.6rem;
+      text-transform: capitalize;
+    }
   }
 }
 

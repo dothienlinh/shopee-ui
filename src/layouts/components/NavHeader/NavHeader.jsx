@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import classNames from 'classnames/bind'
 import styles from './NavHeader.module.scss'
 import { Container } from 'react-bootstrap'
@@ -24,6 +24,7 @@ function NavHeader() {
   const notificationMenuRef = useRef()
   const languageMenuRef = useRef()
   const menuUserRef = useRef()
+  const [isLogin, setIsLogin] = useState(false)
 
   const language = useSelector((state) => state.language)
 
@@ -180,26 +181,42 @@ function NavHeader() {
                 </div>
               </div>
             </li>
-            <li className={cx('menu-item', 'menu-user')}>
-              <div className={cx('user-name')}>
-                <Link
-                  to={'/purchase'}
-                  className={cx('menu-right-text', 'name', 'account')}
-                  onMouseEnter={handleMouseEnterMenuUser}
-                  onMouseLeave={handleMouseLeaveMenuUser}
-                >
-                  <div className={cx('avatar')}>
-                    <img
-                      className={cx('avatar-img')}
-                      src={images.avatar}
-                      alt="Avatar"
-                    />
-                  </div>
-                  <span>dothienlinh</span>
-                </Link>
-                <MenuUser ref={menuUserRef} />
-              </div>
-            </li>
+            {isLogin ? (
+              <li className={cx('menu-item', 'menu-user')}>
+                <div className={cx('user-name')}>
+                  <Link
+                    to={'/purchase'}
+                    className={cx('menu-right-text', 'name', 'account')}
+                    onMouseEnter={handleMouseEnterMenuUser}
+                    onMouseLeave={handleMouseLeaveMenuUser}
+                  >
+                    <div className={cx('avatar')}>
+                      <img
+                        className={cx('avatar-img')}
+                        src={images.avatar}
+                        alt="Avatar"
+                      />
+                    </div>
+                    <span>dothienlinh</span>
+                  </Link>
+                  <MenuUser ref={menuUserRef} />
+                </div>
+              </li>
+            ) : (
+              <>
+                <li className={cx('menu-item')}>
+                  <Link to={'/signup'} className={cx('menu-link')}>
+                    <span>Đăng ký</span>
+                  </Link>
+                  <span className={cx('separation')}></span>
+                </li>
+                <li className={cx('menu-item')}>
+                  <Link to={'/login'} className={cx('menu-link')}>
+                    <span>Đăng nhập</span>
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
 

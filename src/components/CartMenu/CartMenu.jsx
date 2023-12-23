@@ -61,15 +61,20 @@ function CartMenu() {
               </h3>
 
               <div className={cx('cart_list')}>
-                {carts.map((cart) => (
-                  <CartItem
-                    key={cart.id}
-                    id={cart.id}
-                    img={cart.thumbnail}
-                    title={cart.title}
-                    price={cart.price}
-                  />
-                ))}
+                {carts
+                  .filter((cart, index) => index < 5)
+                  .map((cart) => (
+                    <CartItem
+                      key={cart.id}
+                      id={cart.id}
+                      img={cart.thumbnail}
+                      title={cart.title}
+                      price={
+                        cart.price -
+                        (cart.price * cart.discountPercentage) / 100
+                      }
+                    />
+                  ))}
               </div>
 
               <div className={cx('footer')}>
