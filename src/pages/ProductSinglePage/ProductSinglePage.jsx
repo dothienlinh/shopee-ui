@@ -7,6 +7,7 @@ import { Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { setProduct } from './productSlice'
 import { FaMinus, FaPlus, FaCartPlus } from 'react-icons/fa'
+import { addCart } from '../../components/CartMenu/cartSlice'
 
 const cx = classNames.bind(styles)
 
@@ -18,7 +19,6 @@ function ProductSinglePage() {
 
   const dispatch = useDispatch()
   const product = useSelector((state) => state.product)
-  const user = useSelector((state) => state.auth)
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -52,7 +52,19 @@ function ProductSinglePage() {
     }
   }
 
-  const handleAddToCart = () => {}
+  const handleAddToCart = () => {
+    dispatch(
+      addCart({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        quantity,
+        total: 60,
+        discountPercentage: product.discountPercentage,
+        thumbnail: product.thumbnail
+      })
+    )
+  }
 
   return (
     <div className={cx('product')}>

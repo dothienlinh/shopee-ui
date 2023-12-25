@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 const cx = classNames.bind(styles)
 
 function CountDown() {
-  const COUNTDOWN_TARGET = new Date('2023-12-20 00:00:00')
+  const COUNTDOWN_TARGET = new Date('2023-12-26 00:00:00')
 
   const getTimeLeft = () => {
     const totalTimeLeft = COUNTDOWN_TARGET.getTime() - new Date().getTime()

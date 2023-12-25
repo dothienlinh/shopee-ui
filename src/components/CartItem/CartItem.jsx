@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
-function CartItem({ id, img, title, price }) {
+function CartItem({ img, title, price }) {
   return (
     <>
-      <Link to={`/${id}`} className={cx('cart_item')}>
+      <Link to={'/cart'} className={cx('cart_item')}>
         <div className={cx('item_img')}>
           <img src={img} alt={title} />
         </div>

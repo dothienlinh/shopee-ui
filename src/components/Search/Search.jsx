@@ -9,7 +9,7 @@ import * as getCategories from '@/apiServices'
 
 const cx = classNames.bind(styles)
 
-function Search() {
+function Search({ className }) {
   const outlineRef = useRef()
   const [searchResult, setSearchResult] = useState([])
   const searchResultRef = useRef()
@@ -51,7 +51,7 @@ function Search() {
   }, [])
 
   return (
-    <div className={cx('wrapper')}>
+    <div className={cx('wrapper', className)}>
       <form className={cx('searchbar')}>
         <div className={cx('searchbar_input')}>
           <div className={cx('box_input')}>

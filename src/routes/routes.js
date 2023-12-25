@@ -23,7 +23,7 @@ const publicRoutes = [
   {
     path: config.routes.cart,
     component: Cart,
-    defaultHeader: true,
+    defaultHeader: false,
     defaultFooter: true
   },
   {
