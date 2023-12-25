@@ -14,7 +14,6 @@ import { loginServices } from '@/apiServices'
 import { useDispatch } from 'react-redux'
 import { addAuth } from './authSlice'
 import { setLogin } from '../../redux/isLoginSlice'
-import Loading from '../Loading/Loading'
 
 const cx = classNames.bind(styles)
 
@@ -31,7 +30,6 @@ function FormLogin({ setIsQRCode }) {
   const inputPassRef = useRef()
   const inputEmail = useRef()
   const errorLogin = useRef()
-  const [loading, setLoading] = useState(false)
 
   const handleShowPass = () => {
     setIsShowPass(!isShowPass)
@@ -90,11 +88,8 @@ function FormLogin({ setIsQRCode }) {
           errorLogin.current.style.display = 'none'
           dispatch(addAuth(res.data))
           dispatch(setLogin())
-          setLoading(true)
-
           setTimeout(() => {
             goBackHome('/')
-            setLoading(false)
           }, 2000)
         } else {
           errorLogin.current.style.display = 'flex'
