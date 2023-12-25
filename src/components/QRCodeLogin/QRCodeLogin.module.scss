@@ -1,0 +1,163 @@
+.wrapper {
+  min-height: 48.2rem;
+  width: 40rem;
+  height: 48.2rem;
+  position: relative;
+
+  .popper_right {
+    border-radius: 0.4rem;
+
+    .heading {
+      padding: 2.2rem 3rem;
+      display: flex;
+      align-items: center;
+      border-radius: 0.4rem 0.4rem 0 0;
+
+      .text {
+        font-size: 2rem;
+        color: #222;
+        min-width: 13.6rem;
+        line-height: 2.4rem;
+      }
+
+      .qr_code {
+        display: flex;
+        align-items: center;
+
+        .title {
+          background-color: #fefaec;
+          border: 2px solid #ffbf00;
+          border-radius: 2px;
+          color: #ffbf00;
+          font-size: 1.4rem;
+          font-weight: 700;
+          padding: 1.2rem 1.4rem;
+          margin-right: 1.6rem;
+          line-height: 1.68rem;
+          margin-left: 2rem;
+          position: relative;
+
+          &::after {
+            content: '';
+            border-right: 2px solid #ffbf00;
+            border-top: 2px solid #ffbf00;
+            background-color: #fefaec;
+            width: 1.2rem;
+            height: 1.2rem;
+            position: absolute;
+            top: 50%;
+            right: -0.7rem;
+            transform: translateY(-50%) rotate(45deg);
+          }
+        }
+
+        .img {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .content {
+      padding: 0 3rem 3rem;
+
+      .box {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+        .qr_code {
+          margin: 0.8rem 8rem 3rem;
+          width: 18rem;
+          height: 18rem;
+          background-image: url('https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/d91264e165ed6facc6178994d5afae79.png');
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+
+        .text {
+          font-size: 2rem;
+          color: #000000de;
+        }
+
+        .help {
+          margin-top: 3rem;
+          font-size: 1.6rem;
+          color: #05a;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .signup_link {
+    font-size: 1.4rem;
+    color: #00000042;
+
+    P {
+      margin: 0;
+
+      .link {
+        color: #ee4d2d;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .popper_left {
+    width: 40rem;
+    height: 48.2rem;
+    position: absolute;
+    top: 0;
+    right: calc(100% + 2rem);
+    transform-origin: center;
+    transform: scale(0);
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+
+    &.show {
+      opacity: 1;
+      transition: all 0.2s ease-in-out;
+      transform: scale(1);
+    }
+
+    .popper {
+      padding: 3rem 5rem;
+      border-radius: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+
+      .heading {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .text {
+          color: #222;
+          font-size: 2rem;
+        }
+
+        .icon {
+          height: 1.8rem;
+          width: 1.8rem;
+          cursor: pointer;
+        }
+      }
+
+      .img {
+        img {
+          max-height: 275px;
+          object-fit: cover;
+        }
+      }
+
+      .text {
+        margin: 0;
+        font-size: 1.6rem;
+        margin: 0.5rem 2rem 0;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+}

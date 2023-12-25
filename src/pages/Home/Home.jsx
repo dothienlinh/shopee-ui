@@ -13,7 +13,8 @@ const cx = classNames.bind(styles)
 
 function Home() {
   useEffect(() => {
-    document.title = 'Shopee Việt Nam | Mua và Bán'
+    document.title =
+      'Shopee Việt Nam | Mua và Bán Trên Ứng Dụng Di Động Hoặc Website'
   }, [])
 
   return (

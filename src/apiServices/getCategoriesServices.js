@@ -1,6 +1,6 @@
 import * as request from '@/utils'
 
-export const getCategories = async () => {
+export const getCategoriesServices = async () => {
   try {
     const response = await request.get('products/categories', {})
 

@@ -1,10 +1,10 @@
 import * as request from '@/utils'
 
-export const getCart = async (idUser) => {
+export const getAProduct = async (idProduct) => {
   try {
-    const response = await request.get('carts/user/' + idUser, {})
+    const response = await request.get(`products/${idProduct}`, {})
 
-    return response.carts
+    return response
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log('Get cart error ', error)

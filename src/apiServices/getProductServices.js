@@ -1,6 +1,6 @@
 import * as request from '@/utils'
 
-export const getProducts = async (limit = 48, skip = 0) => {
+export const getProductsServices = async (limit = 48, skip = 0) => {
   try {
     const response = await request.get('products', {
       params: {

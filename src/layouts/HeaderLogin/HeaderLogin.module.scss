@@ -1,0 +1,45 @@
+.header_login {
+  height: 8.4rem;
+
+  .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .wrapper {
+      width: 100%;
+      height: 3.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .header_left {
+        display: flex;
+        align-items: center;
+
+        .logo_link {
+          fill: #ee4d2d;
+
+          .logo {
+            height: 4.2rem;
+          }
+        }
+
+        .text {
+          font-size: 2.6rem;
+          color: #222;
+          font-weight: 400;
+        }
+      }
+
+      .header_right {
+        .portal {
+          text-decoration: none;
+          font-size: 1.4rem;
+          color: #ee4d2d;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}

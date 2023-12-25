@@ -4,6 +4,9 @@ import classNames from 'classnames/bind'
 import styles from './MenuUser.module.scss'
 import Popper from '@/components/Popper'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { addAuth } from '../FormLogin/authSlice'
+import { setLogin } from '../../redux/isLoginSlice'
 
 const cx = classNames.bind(styles)
 
@@ -19,6 +22,24 @@ function MenuUser(props, ref) {
     }
   }))
 
+  const dispatch = useDispatch()
+
+  const handleLogout = () => {
+    dispatch(
+      addAuth({
+        id: 0,
+        username: '',
+        email: '',
+        firstName: '',
+        lastName: '',
+        gender: '',
+        image: '',
+        token: ''
+      })
+    )
+    dispatch(setLogin())
+  }
+
   return (
     <div className={cx('wrapper')} ref={menuRef}>
       <div className={cx('user-menu')}>
@@ -30,7 +51,7 @@ function MenuUser(props, ref) {
           <Link to={'/purchase'} className={cx('item')}>
             <span>Đơn Mua</span>
           </Link>
-          <div className={cx('item')}>
+          <div className={cx('item')} onClick={handleLogout}>
             <span>Đăng xuất</span>
           </div>
         </Popper>

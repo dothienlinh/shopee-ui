@@ -6,6 +6,8 @@ import styles from './NotificationMenu.module.scss'
 import Popper from '@/components/Popper'
 import { notification as data } from '@/data/notification'
 import NotificationItem from '../NotificationItem/NotificationItem'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
@@ -26,6 +28,18 @@ function NotificationMenu({ onMouseEnter, onMouseLeave }, ref) {
     }
   }))
 
+  const isLogin = useSelector((state) => state.login.login)
+
+  const loginPage = useNavigate('/')
+  const handleLoginBtn = () => {
+    loginPage('/login')
+  }
+
+  const signupPage = useNavigate('/')
+  const handleSignupBtn = () => {
+    signupPage('/signup')
+  }
+
   return (
     <div
       className={cx('wrapper')}
@@ -36,14 +50,37 @@ function NotificationMenu({ onMouseEnter, onMouseLeave }, ref) {
       <div className={cx('box')}>
         <div className={cx('arrow')}></div>
         <Popper className={cx('popper')}>
-          <div className={cx('title')}>
-            <p>Thông báo mới nhận</p>
-          </div>
-          <div>
-            {data.map((item) => (
-              <NotificationItem props={item} key={item.id} />
-            ))}
-          </div>
+          {isLogin ? (
+            <>
+              <div className={cx('title')}>
+                <p>Thông báo mới nhận</p>
+              </div>
+              <div>
+                {data.map((item) => (
+                  <NotificationItem props={item} key={item.id} />
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
+              <div className={cx('box')}>
+                <div className={cx('img')}>
+                  <img
+                    src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/99e561e3944805a023e87a81d4869600.png"
+                    alt="Image"
+                  />
+                </div>
+                <div className={cx('footer_box')}>
+                  <button className={cx('btn')} onClick={handleSignupBtn}>
+                    Đăng ký
+                  </button>
+                  <button className={cx('btn')} onClick={handleLoginBtn}>
+                    Đăng nhập
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
         </Popper>
       </div>
     </div>

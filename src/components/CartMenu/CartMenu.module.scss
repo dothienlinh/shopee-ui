@@ -109,8 +109,32 @@
           background-color: #ee4d2d;
           text-decoration: none;
           height: 3.4rem;
+          margin-left: auto;
         }
       }
+    }
+  }
+}
+
+.box {
+  width: 40rem;
+  background-color: var(--nc-white);
+
+  .img {
+    padding: 6rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 10rem;
+      height: 10rem;
+    }
+
+    .text {
+      font-size: 1.4rem;
+      color: #000000cc;
     }
   }
 }

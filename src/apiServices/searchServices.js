@@ -1,6 +1,6 @@
 import * as request from '@/utils'
 
-export const search = async (q) => {
+export const searchServices = async (q) => {
   try {
     const response = await request.get('products/search', {
       params: {

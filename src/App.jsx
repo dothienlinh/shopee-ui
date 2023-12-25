@@ -13,7 +13,10 @@ function App() {
               key={index}
               path={route.path}
               element={
-                <DefaultLayout>
+                <DefaultLayout
+                  defaultHeader={route.defaultHeader}
+                  defaultFooter={route.defaultFooter}
+                >
                   <Page />
                 </DefaultLayout>
               }

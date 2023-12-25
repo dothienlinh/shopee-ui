@@ -7,7 +7,7 @@ const cx = classNames.bind(styles)
 function CartItem({ id, img, title, price }) {
   return (
     <>
-      <Link to={`products/${id}`} className={cx('cart_item')}>
+      <Link to={`/${id}`} className={cx('cart_item')}>
         <div className={cx('item_img')}>
           <img src={img} alt={title} />
         </div>

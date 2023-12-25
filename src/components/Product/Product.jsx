@@ -15,7 +15,7 @@ function Product({
 }) {
   return (
     <div>
-      <Link to={`/product/${id}`} className={cx('item')}>
+      <Link to={`/${id}`} className={cx('item')}>
         <div className={cx('box')}>
           <div className={cx('product_img')}>
             <img src={thumbnail} alt={title} />

@@ -1,10 +1,10 @@
 const routes = {
   home: '/',
-  product: '/product',
-  notification: '/notification',
-  purchase: '/purchase',
   profile: '/profile',
-  cart: '/cart'
+  cart: '/cart',
+  login: '/login',
+  signup: '/signup',
+  productSinglePage: '/:id'
 }
 
 export default routes

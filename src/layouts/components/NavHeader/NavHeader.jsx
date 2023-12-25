@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import classNames from 'classnames/bind'
 import styles from './NavHeader.module.scss'
 import { Container } from 'react-bootstrap'
@@ -11,7 +11,6 @@ import {
   ChevronDownIcon,
   LanguageIcon
 } from '@/components/Icons'
-import images from '@/data/images'
 import Popper from '@/components/Popper'
 import NotificationMenu from '@/components/NotificationMenu'
 import LanguageMenu from '@/components/LanguageMenu'
@@ -24,7 +23,9 @@ function NavHeader() {
   const notificationMenuRef = useRef()
   const languageMenuRef = useRef()
   const menuUserRef = useRef()
-  const [isLogin, setIsLogin] = useState(false)
+
+  const isLogin = useSelector((state) => state.login.login)
+  const user = useSelector((state) => state.auth)
 
   const language = useSelector((state) => state.language)
 
@@ -193,11 +194,11 @@ function NavHeader() {
                     <div className={cx('avatar')}>
                       <img
                         className={cx('avatar-img')}
-                        src={images.avatar}
+                        src={user.image}
                         alt="Avatar"
                       />
                     </div>
-                    <span>dothienlinh</span>
+                    <span>{user.username}</span>
                   </Link>
                   <MenuUser ref={menuUserRef} />
                 </div>

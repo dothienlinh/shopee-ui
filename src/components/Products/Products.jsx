@@ -14,7 +14,10 @@ function Products() {
 
   useEffect(() => {
     const fetchApi = async () => {
-      const products = await getProductsServices.getProducts(limit, skip)
+      const products = await getProductsServices.getProductsServices(
+        limit,
+        skip
+      )
 
       setProducts(products)
     }

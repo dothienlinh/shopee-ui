@@ -1,10 +1,12 @@
+import FooterMain from '../Footer/FooterMain'
 import Header from '../components/Header'
 
-function DefaultLayout({ children }) {
+function DefaultLayout({ children, defaultHeader, defaultFooter }) {
   return (
     <>
-      <Header />
+      {defaultHeader && <Header />}
       {children}
+      {defaultFooter && <FooterMain />}
     </>
   )
 }

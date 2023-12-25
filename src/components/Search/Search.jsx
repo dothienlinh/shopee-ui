@@ -28,7 +28,7 @@ function Search() {
 
   useEffect(() => {
     const fetchApi = async () => {
-      const searchResult = await searchServices.search(valueInput)
+      const searchResult = await searchServices.searchServices(valueInput)
       setSearchResult(searchResult)
     }
 
@@ -38,7 +38,7 @@ function Search() {
   useEffect(() => {
     const fetchApi = async () => {
       try {
-        const response = await getCategories.getCategories()
+        const response = await getCategories.getCategoriesServices()
 
         setCategories(response)
       } catch (error) {
@@ -83,7 +83,11 @@ function Search() {
                     </Link>
                     <div className={cx('search_result_list')}>
                       {searchResult.map((item) => (
-                        <Link to={'/'} key={item.id} className={cx('result')}>
+                        <Link
+                          to={'/' + item.id}
+                          key={item.id}
+                          className={cx('result')}
+                        >
                           {item.title}
                         </Link>
                       ))}
