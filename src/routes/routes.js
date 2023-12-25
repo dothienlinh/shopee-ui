@@ -1,7 +1,6 @@
 import config from '../config'
 
 import Home from '../pages/Home'
-import Profile from '../pages/Profile'
 import Cart from '../pages/Cart'
 import Login from '../pages/Login'
 import Signup from '../pages/Signup'
@@ -11,12 +10,6 @@ const publicRoutes = [
   {
     path: config.routes.home,
     component: Home,
-    defaultHeader: true,
-    defaultFooter: true
-  },
-  {
-    path: config.routes.profile,
-    component: Profile,
     defaultHeader: true,
     defaultFooter: true
   },
