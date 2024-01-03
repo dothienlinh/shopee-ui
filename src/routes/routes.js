@@ -5,6 +5,7 @@ import Cart from '../pages/Cart'
 import Login from '../pages/Login'
 import Signup from '../pages/Signup'
 import ProductSinglePage from '../pages/ProductSinglePage'
+import Checkout from '../pages/Checkout'
 
 const publicRoutes = [
   {
@@ -35,6 +36,12 @@ const publicRoutes = [
     path: config.routes.productSinglePage,
     component: ProductSinglePage,
     defaultHeader: true,
+    defaultFooter: true
+  },
+  {
+    path: config.routes.checkout,
+    component: Checkout,
+    defaultHeader: false,
     defaultFooter: true
   }
 ]

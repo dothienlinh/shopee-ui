@@ -9,7 +9,7 @@ import * as getCategories from '@/apiServices'
 
 const cx = classNames.bind(styles)
 
-function Search({ className }) {
+function Search({ className, visibility }) {
   const outlineRef = useRef()
   const [searchResult, setSearchResult] = useState([])
   const searchResultRef = useRef()
@@ -117,17 +117,19 @@ function Search({ className }) {
         </button>
       </form>
 
-      <div className={cx('search_list')}>
-        {categories.map((item, index) => (
-          <Link
-            to={`/products/category/${item}`}
-            key={index}
-            className={cx('featured_search')}
-          >
-            {item}
-          </Link>
-        ))}
-      </div>
+      {visibility && (
+        <div className={cx('search_list')}>
+          {categories.map((item, index) => (
+            <Link
+              to={`/products/category/${item}`}
+              key={index}
+              className={cx('featured_search')}
+            >
+              {item}
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

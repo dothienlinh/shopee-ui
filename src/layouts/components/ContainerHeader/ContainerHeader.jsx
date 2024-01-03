@@ -16,7 +16,7 @@ function ContainerHeader() {
           <ShopeeLogo className={cx('logo-shopee')} />
         </Link>
 
-        <Search />
+        <Search visibility={true} />
 
         <CartMenu />
       </Container>

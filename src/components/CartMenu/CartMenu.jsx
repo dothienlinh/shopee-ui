@@ -8,15 +8,18 @@ import CartItem from '../CartItem'
 import { getCartServices } from '@/apiServices'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCart } from '../../components/CartMenu/cartSlice'
+import { useCookies } from 'react-cookie'
+import { addAuth } from '../FormLogin/authSlice'
 
 const cx = classNames.bind(styles)
 
 function CartMenu() {
-  const menuCartRef = useRef()
-  const cart = useSelector((state) => state.cart)
-  const isLogin = useSelector((state) => state.login.login)
-  const user = useSelector((state) => state.auth)
   const dispatch = useDispatch()
+
+  const menuCartRef = useRef()
+  const cart = useSelector((state) => state.cart.cartList)
+
+  const [cookie] = useCookies(['user'])
 
   const handleMouseEnter = () => {
     menuCartRef.current.classList.add(styles.show)
@@ -29,18 +32,48 @@ function CartMenu() {
   useEffect(() => {
     const fetchApi = async () => {
       try {
-        const response = await getCartServices(user.id)
+        const response = await getCartServices(cookie.user.id)
 
-        dispatch(setCart(response[0].products))
+        const res = () => {
+          return response[0].products.map((item) => {
+            return {
+              ...item,
+              discountedPrice:
+                item.total - (item.total * item.discountPercentage) / 100
+            }
+          })
+        }
+
+        if (!response.length) {
+          if (!localStorage.getItem('cart')) {
+            localStorage.setItem('cart', JSON.stringify(response))
+            dispatch(setCart(response))
+          }
+        } else if (!localStorage.getItem('cart')) {
+          localStorage.setItem('cart', JSON.stringify(res()))
+          dispatch(setCart(res()))
+        }
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log(error)
       }
     }
 
-    if (isLogin) {
+    if (cookie.user) {
       fetchApi()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    if (cookie.user) {
+      dispatch(addAuth(cookie.user))
+    }
+
+    if (localStorage.getItem('cart')) {
+      dispatch(setCart(JSON.parse(localStorage.getItem('cart'))))
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -48,18 +81,18 @@ function CartMenu() {
     <>
       <div className={cx('cart')}>
         <Link
-          to={isLogin ? '/cart' : '/login'}
+          to={cookie.user ? '/cart' : '/login'}
           className={cx('cart_link')}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           <PiShoppingCartSimpleBold className={cx('cart_icon')} />
-          {isLogin &&
-            (cart.cartList.length === 0 ? (
+          {cookie.user &&
+            (cart.length === 0 ? (
               true
             ) : (
               <div className={cx('number_badge')}>
-                <span>{cart.cartList.length}</span>
+                <span>{cart.length}</span>
               </div>
             ))}
         </Link>
@@ -68,14 +101,14 @@ function CartMenu() {
           <div className={cx('content')}>
             <div className={cx('arrow-tippy')}></div>
             <Popper>
-              {isLogin ? (
+              {cookie.user ? (
                 <>
                   <h3 className={cx('title')}>
                     <span className="test">Sản phẩm mới thêm</span>
                   </h3>
 
                   <div className={cx('cart_list')}>
-                    {cart.cartList
+                    {cart
                       .filter((cart, index) => index < 5)
                       .map((cart) => (
                         <CartItem
@@ -91,11 +124,11 @@ function CartMenu() {
                   </div>
 
                   <div className={cx('footer')}>
-                    {cart.cartList.length <= 5 ? (
+                    {cart.length <= 5 ? (
                       true
                     ) : (
                       <p className={cx('text')}>
-                        <span>{cart.cartList.length - 5} </span>
+                        <span>{cart.length - 5} </span>
                         <span>Thêm hàng vào giỏ</span>
                       </p>
                     )}

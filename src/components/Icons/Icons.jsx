@@ -327,3 +327,21 @@ export const CloseLargeIcon = ({ className }) => (
     />
   </svg>
 )
+
+export const ModalCartPageIcon = ({ className }) => (
+  <svg
+    viewBox="0 0 36 36"
+    className={className}
+    fill="none"
+    width={36}
+    height={36}
+    color="#fff"
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M18 32c8.837 0 16-7.163 16-16S26.837 0 18 0 2 7.163 2 16c0 5.654 2.932 10.622 7.359 13.468L8.437 36l6.388-4.315C15.85 31.892 16.913 32 18 32zm.016-10c-.88 0-1.602-.7-1.63-1.58l-.384-12.34a2.016 2.016 0 114.03 0l-.386 12.342A1.63 1.63 0 0118.016 22zm0 5.4a1.7 1.7 0 100-3.4 1.7 1.7 0 000 3.4z"
+      fill="currentColor"
+    />
+  </svg>
+)

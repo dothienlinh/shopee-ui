@@ -28,10 +28,7 @@ function Slider() {
               <Carousel className={cx('slider_left')}>
                 {slider.map((item) => (
                   <Carousel.Item key={item.id}>
-                    <Link
-                      to={'/tro-lai-san-deal-2023'}
-                      className={cx('img_link')}
-                    >
+                    <Link to={'/'} className={cx('img_link')}>
                       <img src={item.url} alt="Image" />
                     </Link>
                   </Carousel.Item>
@@ -40,14 +37,14 @@ function Slider() {
             </Col>
             <Col lg={4} className="px-2">
               <div className={cx('slider_right')}>
-                <Link to={'./uu-dai-techcombank'} className={cx('img_link')}>
+                <Link to={'/'} className={cx('img_link')}>
                   <img
                     src="https://cf.shopee.vn/file/vn-50009109-9c6900b5557dd99f2abad2ae354bc9f6_xhdpi"
                     alt="Image Banner"
                     className={cx('img_top')}
                   />
                 </Link>
-                <Link to={'./mien-phi-van-chuyen'} className={cx('img_link')}>
+                <Link to={'/'} className={cx('img_link')}>
                   <img
                     src="https://cf.shopee.vn/file/vn-50009109-ed8aeb9d5ab3654ce0bf1aeb857bb5a3_xhdpi"
                     alt="Image Banner"

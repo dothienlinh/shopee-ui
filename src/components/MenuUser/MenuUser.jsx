@@ -6,12 +6,13 @@ import Popper from '@/components/Popper'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addAuth } from '../FormLogin/authSlice'
-import { setLogin } from '../../redux/isLoginSlice'
+import { useCookies } from 'react-cookie'
 
 const cx = classNames.bind(styles)
 
 function MenuUser(props, ref) {
   const menuRef = useRef()
+  const [cookie, setCookie, removeCookie] = useCookies(['user'])
 
   useImperativeHandle(ref, () => ({
     addClass() {
@@ -26,6 +27,7 @@ function MenuUser(props, ref) {
   const goBackHome = useNavigate()
 
   const handleLogout = () => {
+    removeCookie('user', ['/'])
     dispatch(
       addAuth({
         id: 0,
@@ -38,7 +40,7 @@ function MenuUser(props, ref) {
         token: ''
       })
     )
-    dispatch(setLogin())
+    localStorage.removeItem('cart')
     goBackHome('/')
   }
 
@@ -50,7 +52,7 @@ function MenuUser(props, ref) {
           <Link to={'/profile'} className={cx('item')}>
             <span>Tài khoản của tôi</span>
           </Link>
-          <Link to={'/purchase'} className={cx('item')}>
+          <Link to={'/'} className={cx('item')}>
             <span>Đơn Mua</span>
           </Link>
           <div className={cx('item')} onClick={handleLogout}>

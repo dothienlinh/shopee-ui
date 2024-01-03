@@ -1,0 +1,21 @@
+.btn {
+  padding: 1.3rem 3.6rem;
+  margin: 0 2.2rem 0 1.5rem;
+  height: 4rem;
+  width: 21rem;
+  border-radius: 0.2rem;
+  font-size: 1.4rem;
+  background-color: #ee4d2d;
+  cursor: pointer;
+  color: var(--nc-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  box-shadow: #00000017 0px 1px 1px 0px;
+  transition: all 0.2s ease 0s;
+
+  &:hover {
+    background-color: #f05d40;
+  }
+}

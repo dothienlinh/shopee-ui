@@ -3,11 +3,12 @@ import classNames from 'classnames/bind'
 import styles from './FlashSale.module.scss'
 import { Container } from 'react-bootstrap'
 import CountDown from '@/components/CountDown'
-import { ArrowRightIcon, FlashIcon } from '@/components/Icons'
-import { flashSaleList } from '@/data'
+import { ArrowRightIcon } from '@/components/Icons'
 import ArrowNext from '@/components/ArrowNext'
 import ArrowPrev from '@/components/ArrowPrev'
 import { useEffect, useRef, useState } from 'react'
+import { getProductsServices } from '@/apiServices'
+import ProductFlashSale from '@/components/ProductFlashSale'
 
 const cx = classNames.bind(styles)
 
@@ -17,6 +18,7 @@ function FlashSale() {
   const arrowNext = useRef()
   const arrowPrev = useRef()
   const [widthOfMenu, setWidthOfMenu] = useState(0)
+  const [flashSale, setFlashSale] = useState([])
 
   useEffect(() => {
     widthOfContainer = menuRef.current.parentElement.offsetWidth
@@ -71,6 +73,27 @@ function FlashSale() {
     setWidthOfMenu(widthOfMenu - (widthOfContainer / 10 / 6) * 5)
   }
 
+  useEffect(() => {
+    const fetchApi = async () => {
+      try {
+        const res = await getProductsServices(100, 0)
+
+        setFlashSale(
+          res
+            .sort((item1, item2) => {
+              return item2.discountPercentage - item1.discountPercentage
+            })
+            .filter((value, index) => index < 16)
+        )
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(error)
+      }
+    }
+
+    fetchApi()
+  }, [])
+
   return (
     <section className={cx('flash_sale')}>
       <Container className={cx('container')}>
@@ -96,79 +119,24 @@ function FlashSale() {
 
           <div className={cx('box')}>
             <div className={cx('product_list')}>
-              <ul
+              <div
                 className={cx('menu')}
                 ref={menuRef}
                 onMouseEnter={handleOnMouseEnterMenu}
                 onMouseLeave={handleOnMouseLeaveMenu}
                 style={{ transform: `translate(${-widthOfMenu}rem, 0px)` }}
               >
-                {flashSaleList.map((item) => (
-                  <li className={cx('menu_item')} key={item.id}>
-                    <Link className={cx('menu_link')}>
-                      <div className={cx('box')}>
-                        <div className={cx('product_img')}>
-                          <img
-                            className={cx('img')}
-                            src={item.img}
-                            alt="Product Image"
-                          />
-
-                          <div className={cx('sale')}>
-                            <FlashIcon className={cx('icon')} />
-                            <span>{item.sale}</span>
-                          </div>
-
-                          <div className={cx('product_label')}>
-                            {item.productLabel.id === 'none' ? (
-                              true
-                            ) : item.productLabel.id === 'mall' ? (
-                              <div className={cx('mall')}>
-                                <img
-                                  src={item.productLabel.content}
-                                  alt="Label Image"
-                                />
-                              </div>
-                            ) : (
-                              <div className={cx('like')}>
-                                <span>{item.productLabel.content}</span>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-
-                        <div className={cx('content')}>
-                          <div className={cx('price')}>
-                            <u>đ</u>
-                            <span>{item.price}</span>
-                          </div>
-
-                          <div className={cx('status')}>
-                            <div className={cx('box')}>
-                              <span className={cx('text')}>{item.status}</span>
-                              <div className={cx('max')}>
-                                <div></div>
-                              </div>
-                              <div
-                                className={cx('percent')}
-                                style={{
-                                  width: `${item.percent}%`
-                                }}
-                              ></div>
-
-                              {item.fire && (
-                                <div className={cx('fire')}>
-                                  <img src={item.fire} alt="Image Fire" />
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  </li>
+                {flashSale.map((item) => (
+                  <ProductFlashSale
+                    key={item.id}
+                    id={item.id}
+                    img={item.thumbnail}
+                    sale={item.discountPercentage}
+                    price={item.price}
+                    category={item.category}
+                  />
                 ))}
-              </ul>
+              </div>
             </div>
             <ArrowNext
               ref={arrowNext}
@@ -188,7 +156,7 @@ function FlashSale() {
 
       <Container>
         <div className={cx('stack_banner')}>
-          <Link to={'/focallure'} className={cx('banner_link')}>
+          <Link to={'/'} className={cx('banner_link')}>
             <img
               className={cx('banner_img')}
               src="https://cf.shopee.vn/file/sg-50009109-0f3ac949a498b5ec5af60baab5da09bb"

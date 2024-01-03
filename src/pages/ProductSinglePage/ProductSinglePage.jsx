@@ -1,13 +1,20 @@
 import classNames from 'classnames/bind'
 import styles from './ProductSinglePage.module.scss'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import { getAProduct } from '@/apiServices/'
 import { Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { setProduct } from './productSlice'
 import { FaMinus, FaPlus, FaCartPlus } from 'react-icons/fa'
-import { addCart } from '../../components/CartMenu/cartSlice'
+import {
+  addCart,
+  addQuantity,
+  changeTotal,
+  discountedPrice
+} from '../../components/CartMenu/cartSlice'
+import { addAuth } from '../../components/FormLogin/authSlice'
+import { useCookies } from 'react-cookie'
 
 const cx = classNames.bind(styles)
 
@@ -51,19 +58,47 @@ function ProductSinglePage() {
       setQuantity((prev) => prev - 1)
     }
   }
+  const goToLogin = useNavigate()
+
+  const [cookie] = useCookies(['user'])
+
+  useEffect(() => {
+    if (cookie.user) {
+      dispatch(addAuth(cookie.user))
+    }
+  }, [cookie.user, dispatch])
+
+  const cart = useSelector((state) => state.cart.cartList)
 
   const handleAddToCart = () => {
-    dispatch(
-      addCart({
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        quantity,
-        total: 60,
-        discountPercentage: product.discountPercentage,
-        thumbnail: product.thumbnail
-      })
-    )
+    if (!cookie.user) {
+      goToLogin('/login')
+    } else {
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i].id === product.id) {
+          dispatch(addQuantity({ index: i, value: quantity }))
+          dispatch(changeTotal({ index: i }))
+          dispatch(discountedPrice({ index: i }))
+
+          return
+        }
+      }
+
+      const total = product.price * quantity
+
+      dispatch(
+        addCart({
+          id: product.id,
+          title: product.title,
+          price: product.price,
+          quantity,
+          total,
+          discountedPrice: total - (total * product.discountPercentage) / 100,
+          discountPercentage: product.discountPercentage,
+          thumbnail: product.thumbnail
+        })
+      )
+    }
   }
 
   return (

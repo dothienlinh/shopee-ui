@@ -8,11 +8,14 @@ import { notification as data } from '@/data/notification'
 import NotificationItem from '../NotificationItem/NotificationItem'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 
 const cx = classNames.bind(styles)
 
 function NotificationMenu({ onMouseEnter, onMouseLeave }, ref) {
   const popperRef = useRef()
+  const [cookie] = useCookies()
+
   useImperativeHandle(ref, () => ({
     addClass() {
       popperRef.current.classList.add(styles.show)
@@ -27,8 +30,6 @@ function NotificationMenu({ onMouseEnter, onMouseLeave }, ref) {
       popperRef.current.classList.remove(styles.mouseEnter)
     }
   }))
-
-  const isLogin = useSelector((state) => state.login.login)
 
   const loginPage = useNavigate('/')
   const handleLoginBtn = () => {
@@ -50,7 +51,7 @@ function NotificationMenu({ onMouseEnter, onMouseLeave }, ref) {
       <div className={cx('box')}>
         <div className={cx('arrow')}></div>
         <Popper className={cx('popper')}>
-          {isLogin ? (
+          {cookie.user ? (
             <>
               <div className={cx('title')}>
                 <p>Thông báo mới nhận</p>

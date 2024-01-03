@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import classNames from 'classnames/bind'
 import styles from './NavHeader.module.scss'
 import { Container } from 'react-bootstrap'
@@ -15,7 +15,9 @@ import Popper from '@/components/Popper'
 import NotificationMenu from '@/components/NotificationMenu'
 import LanguageMenu from '@/components/LanguageMenu'
 import MenuUser from '@/components/MenuUser'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useCookies } from 'react-cookie'
+import { addAuth } from '../../../components/FormLogin/authSlice'
 
 const cx = classNames.bind(styles)
 
@@ -24,9 +26,19 @@ function NavHeader() {
   const languageMenuRef = useRef()
   const menuUserRef = useRef()
 
-  const isLogin = useSelector((state) => state.login.login)
-  const user = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
 
+  const [cookie] = useCookies(['user'])
+
+  useEffect(() => {
+    if (cookie.user) {
+      dispatch(addAuth(cookie.user))
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const user = useSelector((state) => state.auth)
   const language = useSelector((state) => state.language)
 
   const handleNotificationMouseEnter = () => {
@@ -59,11 +71,7 @@ function NavHeader() {
         <nav className={cx('navbar')}>
           <ul className={cx('menu')}>
             <li className={cx('menu-item')}>
-              <Link
-                to="portal/onboarding/"
-                target="_blank"
-                className={cx('menu-link')}
-              >
+              <Link to="/" className={cx('menu-link')}>
                 Kênh Người Bán
               </Link>
               <span className={cx('separation')}></span>
@@ -104,7 +112,7 @@ function NavHeader() {
                     )
                   }}
                 >
-                  <Link to="/web" target="_blank" className={cx('menu-link')}>
+                  <Link to="/" className={cx('menu-link')}>
                     Tải ứng dụng
                   </Link>
                 </Tippy>
@@ -134,7 +142,7 @@ function NavHeader() {
             <li className={cx('menu-item')}>
               <div className="position-relative">
                 <Link
-                  to={'/notification'}
+                  to={'/'}
                   className={cx('menu-link', 'notification_link')}
                   onMouseEnter={handleNotificationMouseEnter}
                   onMouseLeave={handleNotificationMouseLeave}
@@ -156,11 +164,7 @@ function NavHeader() {
               </div>
             </li>
             <li className={cx('menu-item')}>
-              <Link
-                to={'/portal'}
-                target="_blank"
-                className={cx('menu-link', 'menu-help')}
-              >
+              <Link to={'/'} className={cx('menu-link', 'menu-help')}>
                 <HelpIcon className={cx('menu-icon-help', 'menu-icon')} />
                 <span className={cx('menu-right-text')}>Hỗ Trợ</span>
               </Link>
@@ -182,11 +186,11 @@ function NavHeader() {
                 </div>
               </div>
             </li>
-            {isLogin ? (
+            {cookie.user?.id ? (
               <li className={cx('menu-item', 'menu-user')}>
                 <div className={cx('user-name')}>
                   <Link
-                    to={'/purchase'}
+                    to={'/'}
                     className={cx('menu-right-text', 'name', 'account')}
                     onMouseEnter={handleMouseEnterMenuUser}
                     onMouseLeave={handleMouseLeaveMenuUser}

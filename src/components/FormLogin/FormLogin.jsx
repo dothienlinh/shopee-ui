@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import classNames from 'classnames/bind'
-import { FaFacebook, FaGoogle } from 'react-icons/fa'
 import styles from './FormLogin.module.scss'
 import Popper from '@/components/Popper'
 import {
@@ -13,7 +12,7 @@ import {
 import { loginServices } from '@/apiServices'
 import { useDispatch } from 'react-redux'
 import { addAuth } from './authSlice'
-import { setLogin } from '../../redux/isLoginSlice'
+import { useCookies } from 'react-cookie'
 
 const cx = classNames.bind(styles)
 
@@ -30,6 +29,7 @@ function FormLogin({ setIsQRCode }) {
   const inputPassRef = useRef()
   const inputEmail = useRef()
   const errorLogin = useRef()
+  const [cookie, setCookie] = useCookies(['user'])
 
   const handleShowPass = () => {
     setIsShowPass(!isShowPass)
@@ -86,8 +86,7 @@ function FormLogin({ setIsQRCode }) {
 
         if (res?.data && res.status === 200) {
           errorLogin.current.style.display = 'none'
-          dispatch(addAuth(res.data))
-          dispatch(setLogin())
+          setCookie('user', res.data)
           setTimeout(() => {
             goBackHome('/')
           }, 2000)
@@ -102,6 +101,12 @@ function FormLogin({ setIsQRCode }) {
 
     fetchApt()
   }
+
+  useEffect(() => {
+    if (cookie.user) {
+      dispatch(addAuth(cookie.user))
+    }
+  }, [cookie.user, dispatch])
 
   return (
     <>
@@ -217,14 +222,14 @@ function FormLogin({ setIsQRCode }) {
                   className={cx('btn')}
                   onClick={(e) => e.preventDefault()}
                 >
-                  <FaFacebook className={cx('icon')} />
+                  <span className={cx('logo_facebook')}></span>
                   <span>Facebook</span>
                 </button>
                 <button
                   className={cx('btn')}
                   onClick={(e) => e.preventDefault()}
                 >
-                  <FaGoogle className={cx('icon')} />
+                  <span className={cx('logo_google')}></span>
                   <span>Google</span>
                 </button>
               </div>

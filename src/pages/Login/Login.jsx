@@ -8,6 +8,8 @@ const cx = classNames.bind(styles)
 
 function Login() {
   useEffect(() => {
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
     document.title = 'Đăng nhập tài khoản  - Mua sắm Online | Shopee Việt Nam'
   }, [])
 

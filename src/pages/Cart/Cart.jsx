@@ -1,72 +1,166 @@
-import { useEffect } from 'react'
-import NavHeader from '@/layouts/components/NavHeader'
+import { useEffect, useState } from 'react'
 import classNames from 'classnames/bind'
 import styles from './Cart.module.scss'
-import { Container } from 'react-bootstrap'
-import Search from '@/components/Search/Search'
-import { ShopeeLogo } from '../../components/Icons'
-import { Link } from 'react-router-dom'
+import { Col, Container, Row } from 'react-bootstrap'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { FaMinus, FaPlus } from 'react-icons/fa'
 import {
-  deleteCart,
   addQuantity,
-  reduceQuantity
+  deleteCart,
+  reduceQuantity,
+  setCart,
+  changeTotal,
+  discountedPrice,
+  deleteMultipleProducts
 } from '../../components/CartMenu/cartSlice'
+import CartPageItem from '@/components/CartPageItem'
+import Button from '@/components/Button'
+import Checkbox from '@mui/material/Checkbox'
+import { FormControlLabel } from '@mui/material'
+import ModalCartPage from '@/components/ModalCartPage'
+import ModalBuyNow from '@/components/ModalBuyNow'
+import HeaderCart from '../../layouts/HeaderCart/HeaderCart'
 
 const cx = classNames.bind(styles)
 
 function Cart() {
   const dispatch = useDispatch()
+  const cart = useSelector((state) => state.cart.cartList)
+  const [checked, setChecked] = useState([])
+  const [totalPayment, setTotalPayment] = useState(0)
+  const [checkedSelectAll, setCheckedSelectAll] = useState(false)
+  const [idProducts, setIdProducts] = useState([])
+  const [isToast, setIsToast] = useState(true)
+  const [isModalBuyNow, setIsModalBuyNow] = useState(true)
+
+  useEffect(() => {
+    dispatch(setCart(JSON.parse(localStorage.getItem('cart'))))
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     document.title = 'Giỏ Hàng'
   }, [])
 
-  const carts = useSelector((state) => state.cart)
-
-  const handleAdds = (index, value = 1) => {
-    dispatch(addQuantity({ index, value }))
+  const handleAdds = (index) => {
+    dispatch(addQuantity({ index, value: 1 }))
+    dispatch(changeTotal({ index }))
+    dispatch(discountedPrice({ index }))
   }
 
-  const handleMinus = (cart, index, value = 1) => {
-    if (cart.quantity === 1) {
+  const handleMinus = (currentProduct, index) => {
+    if (currentProduct.quantity <= 1) {
       dispatch(reduceQuantity({ index, value: 0 }))
     } else {
-      dispatch(reduceQuantity({ index, value }))
+      dispatch(reduceQuantity({ index, value: 1 }))
     }
+
+    dispatch(changeTotal({ index }))
+    dispatch(discountedPrice({ index }))
   }
 
   const handleDelete = (index) => {
-    dispatch(deleteCart(index))
+    dispatch(deleteCart({ index, amount: 1 }))
+  }
+
+  const handleCheck = (index) => {
+    setChecked((prev) => {
+      if (prev.includes(index)) {
+        const newPrev = prev.filter((item) => index !== item)
+        return newPrev
+      } else {
+        const newPrev = [...prev, index]
+        return newPrev
+      }
+    })
+  }
+
+  const handleTotalPayment = () => {
+    setTotalPayment(
+      checked.reduce((result, currentValue) => {
+        if (!cart[currentValue]) {
+          return result + 0
+        }
+
+        return result + cart[currentValue].discountedPrice
+      }, 0)
+    )
+  }
+
+  const handleSelectAll = (e) => {
+    if (e.target.checked) {
+      cart.forEach((element, index) => {
+        setChecked((prev) => [...prev, index])
+      })
+      setCheckedSelectAll(!checkedSelectAll)
+    } else {
+      setChecked([])
+      setCheckedSelectAll(!checkedSelectAll)
+    }
+  }
+
+  const handleSelectDelete = () => {
+    if (!checked.length) {
+      setIsToast(false)
+      setTimeout(() => {
+        setIsToast(true)
+      }, 2000)
+    } else if (checkedSelectAll) {
+      dispatch(deleteCart({ index: 0, amount: checked.length }))
+      setChecked([])
+    } else {
+      dispatch(deleteMultipleProducts(idProducts))
+      setChecked([])
+    }
+  }
+
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+
+    checked.forEach((item) => {
+      setIdProducts((prev) => {
+        const newPrev = new Set([...prev, cart[item].id])
+
+        return Array.from(newPrev)
+      })
+    })
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checked])
+
+  useEffect(() => {
+    handleTotalPayment()
+
+    checked.length === cart.length
+      ? setCheckedSelectAll(true)
+      : setCheckedSelectAll(false)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checked, cart])
+
+  const checkout = useNavigate()
+
+  const handleModalBuyNow = () => {
+    if (!checked.length) {
+      setIsModalBuyNow(false)
+    } else {
+      checkout('/checkout')
+    }
   }
 
   return (
     <div>
-      <div className={cx('header')}>
-        <NavHeader />
-        <section className={cx('content_header')}>
-          <Container>
-            <div className={cx('container')}>
-              <div className={cx('logo')}>
-                <Link to={'/'}>
-                  <ShopeeLogo className={cx('shopee_logo')} />
-                </Link>
-
-                <div className={cx('cart_pag_name')}>
-                  <span>Giỏ Hàng</span>
-                </div>
-              </div>
-
-              <Search className={cx('search')} />
-            </div>
-          </Container>
-        </section>
-      </div>
+      <ModalCartPage hidden={isToast} />
+      <ModalBuyNow
+        isModalBuyNow={isModalBuyNow}
+        setIsModalBuyNow={setIsModalBuyNow}
+      />
+      <HeaderCart title={'Giỏ Hàng'} search />
 
       <section className={cx('main')}>
         <Container>
-          {carts.cartList.length === 0 ? (
+          {cart.length === 0 ? (
             <div className={cx('go_back_home')}>
               <div className={cx('content')}>
                 <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/9bdd8040b334d31946f49e36beaf32db.png" />
@@ -87,9 +181,35 @@ function Cart() {
               </div>
 
               <div className={cx('heading')}>
-                <label className={cx('checkbox')}>
-                  <input type="checkbox" /> Sản Phẩm
-                </label>
+                <div className={cx('checkbox')}>
+                  <FormControlLabel
+                    sx={{
+                      '& .MuiFormControlLabel-label': {
+                        fontSize: '1.4rem'
+                      }
+                    }}
+                    value="end"
+                    control={
+                      <Checkbox
+                        checked={checkedSelectAll}
+                        onChange={handleSelectAll}
+                        sx={{
+                          margin: '0 1.2rem 0 1.1rem',
+                          color: '#00000024',
+                          '&.Mui-checked': {
+                            color: '#ee4d2d'
+                          },
+                          '& .MuiSvgIcon-fontSizeMedium': {
+                            width: '2.1rem',
+                            height: '2.1rem'
+                          }
+                        }}
+                      />
+                    }
+                    label="Sản Phẩm"
+                    labelPlacement="end"
+                  />
+                </div>
                 <div className={cx('price')}>
                   <span>Đơn Giá</span>
                 </div>
@@ -105,72 +225,81 @@ function Cart() {
               </div>
 
               <div className={cx('content')}>
-                {carts.cartList.map((cart, index) => (
-                  <div key={cart.id} className={cx('box')}>
-                    <div className={cx('content_left')}>
-                      <div className={cx('check')}>
-                        <input type="checkbox" />
-                      </div>
-
-                      <div className={cx('info_product')}>
-                        <img className={cx('img')} src={cart.thumbnail} />
-                        <div className={cx('title')}>{cart.title}</div>
-                      </div>
-                    </div>
-
-                    <div className={cx('price')}>
-                      <span className={cx('oll_price')}>
-                        ${cart.price.toFixed(2)}
-                      </span>
-                      <span className={cx('new_price')}>
-                        $
-                        {(
-                          cart.price -
-                          (cart.price * cart.discountPercentage) / 100
-                        ).toFixed(2)}
-                      </span>
-                    </div>
-
-                    <div className={cx('qty-change')}>
-                      <button
-                        className={cx('qty-decrease', 'btn')}
-                        onClick={() => handleMinus(cart, index, 1)}
-                      >
-                        <FaMinus />
-                      </button>
-                      <div className={cx('qty-value')}>
-                        <span>{cart.quantity}</span>
-                      </div>
-                      <button
-                        className={cx('qty-increase', 'btn')}
-                        onClick={() => handleAdds(index, 1)}
-                      >
-                        <FaPlus />
-                      </button>
-                    </div>
-
-                    <div className={cx('money')}>
-                      $
-                      {(
-                        (cart.price -
-                          (cart.price * cart.discountPercentage) / 100) *
-                        cart.quantity
-                      ).toFixed(2)}
-                    </div>
-
-                    <div className={cx('option')}>
-                      <span
-                        className={cx('delete')}
-                        onClick={() => {
-                          handleDelete(index)
-                        }}
-                      >
-                        Delete
-                      </span>
-                      <span className={cx('but_now')}>Buy Now</span>
-                    </div>
-                  </div>
+                {cart.map((cart, index) => (
+                  <CartPageItem
+                    key={cart.id}
+                    id={cart.id}
+                    thumbnail={cart.thumbnail}
+                    title={cart.title}
+                    price={cart.price}
+                    discountPercentage={cart.discountPercentage}
+                    discountedPrice={cart.discountedPrice}
+                    quantity={cart.quantity}
+                    cart={cart}
+                    index={index}
+                    checked={checked}
+                    handleAdds={handleAdds}
+                    handleMinus={handleMinus}
+                    handleDelete={handleDelete}
+                    handleCheck={handleCheck}
+                  />
                 ))}
+
+                <Container fluid className={cx('footer')}>
+                  <Row className={cx('row')}>
+                    <Col className={cx('col')}>
+                      <div className={cx('select_all')}>
+                        <FormControlLabel
+                          className={cx('label')}
+                          onChange={handleSelectAll}
+                          sx={{
+                            '& .MuiFormControlLabel-label': {
+                              fontSize: '1.8rem'
+                            }
+                          }}
+                          value="end"
+                          control={
+                            <Checkbox
+                              checked={checkedSelectAll}
+                              size="large"
+                              sx={{
+                                margin: '0 1.2rem 0 2rem',
+                                color: '#00000024',
+                                '&.Mui-checked': {
+                                  color: '#ee4d2d'
+                                }
+                              }}
+                            />
+                          }
+                          label={`Select All (${cart.length})`}
+                          labelPlacement="end"
+                        />
+                        <div
+                          className={cx('delete')}
+                          onClick={handleSelectDelete}
+                        >
+                          Delete
+                        </div>
+                      </div>
+                    </Col>
+                    <Col className={cx('col')}>
+                      <div className={cx('buy_now')}>
+                        <span className={cx('text')}>
+                          Total payment ({checked.length} Product):
+                        </span>
+
+                        <span className={cx('total')}>
+                          ${totalPayment.toFixed(2)}
+                        </span>
+
+                        <Button
+                          text={'Buy Now'}
+                          handleModalBuyNow={handleModalBuyNow}
+                        />
+                      </div>
+                    </Col>
+                  </Row>
+                </Container>
               </div>
             </>
           )}

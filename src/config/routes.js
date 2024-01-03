@@ -3,7 +3,8 @@ const routes = {
   cart: '/cart',
   login: '/login',
   signup: '/signup',
-  productSinglePage: '/:id'
+  productSinglePage: '/:id',
+  checkout: '/checkout'
 }
 
 export default routes

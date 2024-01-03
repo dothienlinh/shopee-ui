@@ -21,7 +21,7 @@ function HeaderLogin({ title }) {
           </div>
 
           <div className={cx('header_right')}>
-            <Link to={'/portal'} className={cx('portal')}>
+            <Link to={'/'} className={cx('portal')}>
               Bạn cần giúp đỡ?
             </Link>
           </div>

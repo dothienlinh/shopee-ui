@@ -1,0 +1,131 @@
+.box {
+  display: flex;
+  padding: 1.5rem 2rem 2rem;
+  margin-top: 1.5rem;
+  align-items: center;
+  background-color: var(--nc-white);
+  transition: all 0.2s ease-in-out;
+
+  .content_left {
+    display: flex;
+    align-items: center;
+    width: 46.27949%;
+  }
+
+  .check {
+    width: 1.6rem;
+    height: 2.1rem;
+    padding-left: 2rem;
+    margin-right: 4rem;
+
+    input {
+      width: 1.6rem;
+      height: 2.1rem;
+    }
+  }
+
+  .info_product {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    .img {
+      height: 10rem;
+      width: 10rem;
+      object-fit: cover;
+    }
+
+    .title {
+      margin-left: 2rem;
+      font-size: 1.4rem;
+      color: #000000de;
+      text-transform: capitalize;
+    }
+  }
+
+  .price {
+    font-size: 1.4rem;
+    color: #0000008a;
+    width: 15.88022%;
+    text-align: center;
+
+    .oll_price {
+      text-decoration: line-through;
+      margin-right: 1rem;
+    }
+  }
+
+  .qty-change {
+    display: flex;
+    justify-content: center;
+    width: 15.4265%;
+
+    .qty-value {
+      width: 5rem;
+      height: 3.2rem;
+      font-size: 1.6rem;
+      text-align: center;
+      border-top: 1px solid #00000017;
+      border-bottom: 1px solid #00000017;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn {
+      width: 3.2rem;
+      height: 3.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      border: 1px solid #00000017;
+      border-radius: 0.2rem;
+    }
+
+    .qty-decrease {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .qty-increase {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .total {
+    font-size: 1.4rem;
+    color: #ee4d2d;
+    width: 10.43557%;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .option {
+    width: 12.70417%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    font-size: 1.6rem;
+    gap: 2rem;
+    font-weight: 500;
+
+    .delete {
+      cursor: pointer;
+    }
+
+    .but_now {
+      cursor: pointer;
+      color: #ee4d2d;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 1.3rem 0 #0000000d;
+  }
+}

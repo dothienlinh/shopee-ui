@@ -8,6 +8,8 @@ const cx = classNames.bind(styles)
 
 function Signup() {
   useEffect(() => {
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
     document.title = 'Đăng ký ngay | Shopee Việt Nam'
   }, [])
 

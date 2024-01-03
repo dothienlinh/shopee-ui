@@ -1,13 +1,11 @@
 import classNames from 'classnames/bind'
 import styles from './FormSignup.module.scss'
 import Popper from '@/components/Popper'
-import { FaFacebook, FaGoogle } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useRef, useState } from 'react'
 
 const cx = classNames.bind(styles)
-const regexPhoneNumber = /(84|0[3|8|9])+([0-9]{8})\b/g
-const _regexPhoneNumber = /(84[3|8|9])+([0-9]{8})\b/g
+const regexPhoneNumber = /((^(\+84|84|0|0084){1})(3|5|7|8|9))+([0-9]{8})$/
 
 function FormSignup() {
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -35,12 +33,7 @@ function FormSignup() {
                   onChange={(e) => {
                     setPhoneNumber(e.target.value)
 
-                    if (
-                      !(
-                        regexPhoneNumber.test(e.target.value) ||
-                        _regexPhoneNumber.test(e.target.value)
-                      )
-                    ) {
+                    if (!regexPhoneNumber.test(e.target.value)) {
                       errorInputRef.current.classList.add(styles.errorInput)
                       messageError.current.style.visibility = 'visible'
                       overlayRef.current.style.display = 'block'
@@ -74,22 +67,22 @@ function FormSignup() {
             </div>
             <div className={cx('group_btn')}>
               <button className={cx('btn')} onClick={(e) => e.preventDefault()}>
-                <FaFacebook className={cx('icon')} />
+                <span className={cx('logo_facebook')}></span>
                 <span>Facebook</span>
               </button>
               <button className={cx('btn')} onClick={(e) => e.preventDefault()}>
-                <FaGoogle className={cx('icon')} />
+                <span className={cx('logo_google')}></span>
                 <span>Google</span>
               </button>
             </div>
           </div>
           <div className={cx('condition')}>
             <span>Bằng việc đăng kí, bạn đã đồng ý với Shopee về </span>
-            <Link to={'/portal/article'} className={cx('condition_link')}>
+            <Link to={'/'} className={cx('condition_link')}>
               Điều khoản dịch vụ
             </Link>
             <span> & </span>
-            <Link to={'/portal/article'} className={cx('condition_link')}>
+            <Link to={'/'} className={cx('condition_link')}>
               Chính sách bảo mật
             </Link>
           </div>

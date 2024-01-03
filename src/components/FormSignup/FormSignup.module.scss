@@ -137,11 +137,24 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      gap: 1rem;
 
-      .icon {
-        margin-right: 1rem;
-        width: 2rem;
-        height: 2rem;
+      .logo_google,
+      .logo_facebook {
+        display: inline-block;
+        width: 2.2rem;
+        height: 2.2rem;
+        background-image: url('https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/7b95007f3377150730bbb5d1ddb477d6.png');
+      }
+
+      .logo_facebook {
+        background-size: 325% 287.5%;
+        background-position: 5.555555555555555% 62.666666666666664%;
+      }
+
+      .logo_google {
+        background-size: 722.2222222222222% 638.8888888888889%;
+        background-position: 83.92857142857143% 5.154639175257732%;
       }
     }
   }
