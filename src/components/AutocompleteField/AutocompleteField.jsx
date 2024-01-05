@@ -22,12 +22,7 @@ function AutocompleteField({
       control={control}
       render={({ field: { ref } }) => (
         <Autocomplete
-          isOptionEqualToValue={(option, value) => {
-            console.log('option: ', option)
-            console.log('value: ', value)
-
-            return option.name === value.name
-          }}
+          isOptionEqualToValue={(option, value) => option.name === value.name}
           noOptionsText="Not found"
           options={options}
           getOptionLabel={(option) => option.name}

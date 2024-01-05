@@ -1,0 +1,267 @@
+.profile {
+  margin-top: 11.9rem;
+  background-color: #f5f5f5;
+  padding-top: 2rem;
+  padding-bottom: 5.4rem;
+  border-bottom: 4px solid var(--brand-primary-color);
+}
+
+.container {
+  display: flex;
+}
+
+.content {
+  padding: 0 3rem 1rem 3rem;
+  width: 100%;
+  background-color: var(--nc-white);
+  border-radius: 0.2rem;
+  box-shadow: 0 1px 2px 0 #00000021;
+}
+
+.heading {
+  padding: 1.8rem 0;
+  border-bottom: 0.1rem solid #efefef;
+
+  h2 {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: 500;
+    line-height: 2.4rem;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+    margin-top: 0.4rem;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    color: #333;
+  }
+}
+
+.main {
+  padding-top: 3rem;
+  display: flex;
+}
+
+.main_left {
+  flex: 1;
+  padding-right: 5rem;
+}
+
+.form_row {
+  display: flex;
+  align-items: center;
+
+  .form_col-title {
+    width: 20%;
+    text-align: end;
+    padding-bottom: 3rem;
+    color: #555555cc;
+    font-size: 1.4rem;
+  }
+
+  .form_col-content {
+    padding: 0 0 3rem 2rem;
+    color: #333;
+    font-size: 1.4rem;
+    width: 100%;
+  }
+
+  .form_input_content {
+    border: 1px solid #00000024;
+    box-shadow: inset 0 2px 0 #00000005;
+    border-radius: 0.2rem;
+    width: 100%;
+  }
+
+  .change {
+    text-decoration: underline;
+    color: #05a;
+    display: inline-block;
+    padding: 0.1rem 0.6rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+  }
+
+  .input {
+    padding: 1.2rem;
+    height: 4rem;
+    width: 100%;
+  }
+
+  .birth_date {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .date {
+    width: 100%;
+    font-size: 1.4rem;
+    color: #000000cc;
+    border: 0.1rem solid rgba(0, 0, 0, 0.09);
+    height: 4rem;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    background-color: var(--nc-white);
+    border-radius: 0.2rem;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      border-color: #ee4d2d;
+    }
+
+    .list_date {
+      width: 100%;
+      height: 0rem;
+      position: absolute;
+      top: calc(100% + 1px);
+      background-color: var(--nc-white);
+      left: 0;
+      right: 0;
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+      border-radius: 0.2rem;
+      overflow: hidden;
+      overflow-y: hidden;
+      transition: all 0.2s ease-in-out;
+
+      .menu {
+        padding: 0;
+        cursor: pointer;
+
+        .menu_item {
+          span {
+            padding: 0.5rem 1.5rem;
+            color: #000000cc;
+            display: block;
+
+            &:hover {
+              color: var(--brand-primary-color);
+            }
+          }
+        }
+      }
+    }
+
+    & .listDateOpen {
+      padding: 0.5rem 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: 16rem;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  .arrow_down {
+    font-size: 1.2rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .arrowDownOpen {
+    transform: rotate(180deg);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .btn_save {
+    padding: 0 2rem;
+    color: var(--nc-white);
+    height: 4rem;
+    background-color: var(--brand-primary-color);
+    border-radius: 0.2rem;
+    margin-left: 0.1rem;
+
+    &:hover {
+      background-color: #f05d40;
+    }
+  }
+}
+
+.change_avatar {
+  width: 28rem;
+  height: auto;
+  border-left: 0.1rem solid #efefef;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .avatar {
+    width: 10rem;
+    height: 10rem;
+    margin: 2rem 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+}
+
+.input_file {
+  display: none;
+}
+
+.btn_select_file {
+  height: 4rem;
+  background-color: transparent;
+  padding: 0 2rem;
+  border: 0.1rem solid #00000017;
+  font-size: 1.4rem;
+
+  &:hover {
+    background-color: #00000005;
+  }
+}
+
+.text {
+  font-size: 1.4rem;
+  color: #999;
+  margin-top: 1.2rem;
+
+  p {
+    margin: 0;
+    line-height: 2rem;
+  }
+}
+
+.updated_successfully {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #00000066;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .content {
+    width: 50rem;
+    padding: 3rem;
+    box-shadow: 0 2px 4px #00000080;
+    border-radius: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .icon {
+    margin-bottom: 1.4rem;
+  }
+
+  .text {
+    color: #000000cc;
+    font-size: 1.6rem;
+  }
+}

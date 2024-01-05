@@ -1,0 +1,38 @@
+.pagination {
+  margin-top: 11.9rem;
+}
+
+.wrapper {
+  padding: 4rem 0 6rem 0;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  h1 {
+    font-size: 2rem;
+    padding: 1.8rem 2rem;
+    border-radius: 1rem;
+    color: var(--nc-white);
+    background-color: var(--brand-primary-color);
+    position: relative;
+    z-index: 10;
+    margin: 0;
+  }
+
+  hr {
+    position: absolute;
+    left: 0;
+    right: 0;
+    border: 0.1rem dotted #00000042;
+  }
+}
+
+.product_list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4rem 0;
+}

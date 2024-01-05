@@ -49,7 +49,7 @@ function MenuUser(props, ref) {
       <div className={cx('user-menu')}>
         <div className={cx('arrow')}></div>
         <Popper>
-          <Link to={'/profile'} className={cx('item')}>
+          <Link to={'/user/account/profile'} className={cx('item')}>
             <span>Tài khoản của tôi</span>
           </Link>
           <Link to={'/'} className={cx('item')}>

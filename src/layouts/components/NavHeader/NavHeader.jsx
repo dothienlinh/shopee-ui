@@ -190,7 +190,7 @@ function NavHeader() {
               <li className={cx('menu-item', 'menu-user')}>
                 <div className={cx('user-name')}>
                   <Link
-                    to={'/'}
+                    to={'/user/account/profile'}
                     className={cx('menu-right-text', 'name', 'account')}
                     onMouseEnter={handleMouseEnterMenuUser}
                     onMouseLeave={handleMouseLeaveMenuUser}

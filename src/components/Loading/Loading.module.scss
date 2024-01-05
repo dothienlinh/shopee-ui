@@ -1,10 +1,14 @@
 .loading {
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--nc-white);
+  background-color: #00000066;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 .dot {
@@ -12,71 +16,71 @@
   height: 2rem;
   background-color: #ee4d2d;
   border-radius: 50%;
-  margin: 2rem;
+  margin: 3rem;
 }
 
 .dot1 {
-  animation: a 1s infinite linear;
+  animation: a 1s ease-in infinite;
 }
 
 .dot2 {
-  animation: b 1s infinite linear;
+  animation: b 1s ease-in infinite;
 }
 
 .dot3 {
-  animation: c 1s infinite linear;
+  animation: c 1s ease-in infinite;
 }
 
 @keyframes a {
   0% {
-    transform: translateY(-0rem);
+    transform: translate(0, 0);
   }
   25% {
-    transform: translateY(-1rem);
+    transform: translate(0, -2rem);
   }
   50% {
-    transform: translateY(-6rem);
+    transform: translate(0, 0);
   }
   75% {
-    transform: translateY(-5rem);
+    transform: translate(0, 0);
   }
   100% {
-    transform: translateY(-0rem);
+    transform: translate(0, 0);
   }
 }
 
 @keyframes b {
   0% {
-    transform: translateY(-0rem);
+    transform: translate(0, 0);
   }
   25% {
-    transform: translateY(-3rem);
+    transform: translate(0, 0);
   }
   50% {
-    transform: translateY(-6rem);
+    transform: translate(0, -2rem);
   }
   75% {
-    transform: translateY(-3rem);
+    transform: translate(0, 0);
   }
   100% {
-    transform: translateY(-0rem);
+    transform: translate(0, 0);
   }
 }
 
 @keyframes c {
   0% {
-    transform: translateY(-0rem);
+    transform: translate(0, 0);
   }
   25% {
-    transform: translateY(-5rem);
+    transform: translate(0, 0);
   }
   50% {
-    transform: translateY(-6rem);
+    transform: translate(0, 0);
   }
   75% {
-    transform: translateY(-1rem);
+    transform: translate(0, -2rem);
   }
   100% {
-    transform: translateY(-0rem);
+    transform: translate(0, 0);
   }
 }

@@ -13,6 +13,7 @@ import { loginServices } from '@/apiServices'
 import { useDispatch } from 'react-redux'
 import { addAuth } from './authSlice'
 import { useCookies } from 'react-cookie'
+import Loading from '../Loading'
 
 const cx = classNames.bind(styles)
 
@@ -30,6 +31,7 @@ function FormLogin({ setIsQRCode }) {
   const inputEmail = useRef()
   const errorLogin = useRef()
   const [cookie, setCookie] = useCookies(['user'])
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleShowPass = () => {
     setIsShowPass(!isShowPass)
@@ -81,21 +83,23 @@ function FormLogin({ setIsQRCode }) {
     e.preventDefault()
 
     const fetchApt = async () => {
+      setIsLoading(true)
       try {
         const res = await loginServices(email, password)
 
         if (res?.data && res.status === 200) {
           errorLogin.current.style.display = 'none'
           setCookie('user', res.data)
-          setTimeout(() => {
-            goBackHome('/')
-          }, 2000)
+          goBackHome('/')
+          setIsLoading(false)
         } else {
+          setIsLoading(false)
           errorLogin.current.style.display = 'flex'
         }
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log(error)
+        setIsLoading(true)
       }
     }
 
@@ -110,6 +114,7 @@ function FormLogin({ setIsQRCode }) {
 
   return (
     <>
+      {isLoading && <Loading />}
       <div className={cx('wrapper')}>
         <Popper classList={cx('popper')}>
           <div className={cx('heading')}>

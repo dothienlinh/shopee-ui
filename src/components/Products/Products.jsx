@@ -44,7 +44,7 @@ function Products() {
         </div>
 
         <div className={cx('see_all')}>
-          <Link to={'/'} className={cx('see_all_link')}>
+          <Link to={'/daily_discover'} className={cx('see_all_link')}>
             <span>Xem Thêm</span>
           </Link>
         </div>

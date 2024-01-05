@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind'
 import styles from './CheckoutContent.module.scss'
 import { Container } from 'react-bootstrap'
-import { Box, Button, Grid, Typography } from '@mui/material'
+import { Box, Button, Grid } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -9,6 +9,7 @@ import FormPersonalInfo from '@/components/FormPersonalInfo'
 import FormShippingAddress from '@/components/FormShippingAddress'
 import { createContext } from 'react'
 import FormVoucher from '@/components/FormVoucher'
+import FormPaymentMethods from '@/components/FormPaymentMethods'
 
 const cx = classNames.bind(styles)
 
@@ -37,7 +38,11 @@ function CheckoutContent() {
     province: yup.string().trim().required('Province/City is required'),
     district: yup.string().trim().required('District is required'),
     wards: yup.string().trim().required('Ward is required'),
-    address: yup.string().trim().required('Address is required')
+    address: yup.string().trim().required('Address is required'),
+    cardholderName: yup.string().required('Cardholder name is required'),
+    cardNumber: yup.string().required('Card number is required'),
+    EXPDate: yup.string().required('EXP Date is required'),
+    CVC: yup.string().required('Card CVC is required')
   })
 
   const {
@@ -62,13 +67,14 @@ function CheckoutContent() {
   const onSubmit = (data) => {
     // eslint-disable-next-line no-console
     console.log(data)
-    alert(data)
+    alert(JSON.stringify(data))
   }
 
   const value = {
     control,
     register,
     setValue,
+    errors,
     isErrorConscious: !!errors.province,
     messageConscious: errors?.province?.message,
     isErrorDistrict: !!errors.district,
@@ -95,14 +101,12 @@ function CheckoutContent() {
               <FormShippingAddress />
 
               <FormVoucher />
+
+              <FormPaymentMethods />
             </Grid>
 
             <Grid item xs={4}>
               <Box sx={{ backgroundColor: 'var(--nc-white)' }}>
-                <Typography sx={{ fontSize: '3rem' }}>
-                  Personal Information
-                </Typography>
-
                 <Button
                   type="submit"
                   variant="contained"
