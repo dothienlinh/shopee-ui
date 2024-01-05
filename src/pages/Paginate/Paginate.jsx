@@ -17,6 +17,8 @@ function Paginate() {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
     setIsLoading(true)
     const fetchApi = async () => {
       const products = await getProductsServices.getProductsServices(
