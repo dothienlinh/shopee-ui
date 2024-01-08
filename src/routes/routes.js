@@ -1,15 +1,15 @@
 import config from '../config'
 
-import Home from '../pages/Home'
-import Cart from '../pages/Cart'
-import Login from '../pages/Login'
-import Signup from '../pages/Signup'
-import ProductSinglePage from '../pages/ProductSinglePage'
-import Checkout from '../pages/Checkout'
-import AccountPayment from '../pages/AccountPayment'
-import Profile from '../pages/Profile'
-import AccountNotification from '../pages/AccountNotification'
-import Paginate from '../pages/Paginate'
+import Home from '../pages/Home/Home'
+import Cart from '../pages/Cart/Cart'
+import Login from '../pages/Login/Login'
+import Signup from '../pages/Signup/Signup'
+import ProductSinglePage from '../pages/ProductSinglePage/ProductSinglePage'
+import Checkout from '../pages/Checkout/Checkout'
+import AccountPayment from '../pages/AccountPayment/AccountPayment'
+import Profile from '../pages/Profile/Profile'
+import AccountNotification from '../pages/AccountNotification/AccountNotification'
+import Paginate from '../pages/Paginate/Paginate'
 
 const publicRoutes = [
   {

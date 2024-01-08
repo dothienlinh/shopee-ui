@@ -5,7 +5,7 @@ import { Container } from 'react-bootstrap'
 import * as getProductsServices from '@/apiServices'
 import Product from '../../components/Product/Product'
 import Pagination from '@mui/material/Pagination'
-import Loading from '@/components/Loading'
+import Loading from '@/components/Loading/Loading'
 
 const cx = classNames.bind(styles)
 const limit = 48

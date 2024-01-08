@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind'
 import styles from './AccountNotification.module.scss'
 import { Container } from 'react-bootstrap'
-import UserAccountMenu from '@/components/UserAccountMenu'
+import UserAccountMenu from '@/components/UserAccountMenu/UserAccountMenu'
 
 import { useState } from 'react'
-import CheckboxNotification from '@/components/CheckboxNotification'
+import CheckboxNotification from '@/components/CheckboxNotification/CheckboxNotification'
 
 const cx = classNames.bind(styles)
 

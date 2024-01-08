@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind'
 import style from './ModalCartPage.module.scss'
-import { ModalCartPageIcon } from '../Icons'
+import { ModalCartPageIcon } from '../Icons/Icons'
 
 const cx = classNames.bind(style)
 

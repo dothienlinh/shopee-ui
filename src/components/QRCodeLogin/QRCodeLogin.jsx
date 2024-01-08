@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind'
 import styles from './QRCodeLogin.module.scss'
-import Popper from '@/components/Popper'
-import { MessageIcon, CloseLargeIcon } from '@/components/Icons'
+import Popper from '@/components/Popper/Popper'
+import { MessageIcon, CloseLargeIcon } from '@/components/Icons/Icons'
 import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 

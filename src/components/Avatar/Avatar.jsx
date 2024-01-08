@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind'
 import styles from './Avatar.module.scss'
 import { Link } from 'react-router-dom'
-import { PenIcon } from '@/components/Icons'
+import { PenIcon } from '@/components/Icons/Icons'
 import { useCookies } from 'react-cookie'
 
 const cx = classNames.bind(styles)

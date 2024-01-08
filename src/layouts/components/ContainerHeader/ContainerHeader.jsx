@@ -1,7 +1,7 @@
 import { Container } from 'react-bootstrap'
 import classNames from 'classnames/bind'
 import styles from './ContainerHeader.module.scss'
-import { ShopeeLogo } from '@/components/Icons'
+import { ShopeeLogo } from '@/components/Icons/Icons'
 import { Link } from 'react-router-dom'
 import Search from '@/components/Search/Search'
 import CartMenu from '@/components/CartMenu/CartMenu'

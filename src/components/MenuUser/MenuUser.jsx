@@ -2,7 +2,7 @@
 import { forwardRef, useImperativeHandle, useRef } from 'react'
 import classNames from 'classnames/bind'
 import styles from './MenuUser.module.scss'
-import Popper from '@/components/Popper'
+import Popper from '@/components/Popper/Popper'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addAuth } from '../FormLogin/authSlice'

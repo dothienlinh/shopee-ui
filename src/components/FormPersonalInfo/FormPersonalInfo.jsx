@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from '@mui/material'
-import TextFieldInput from '../TextFieldInput'
+import TextFieldInput from '../TextFieldInput/TextFieldInput'
 
 function FormPersonalInfo({ errors }) {
   return (

@@ -3,10 +3,10 @@ import classNames from 'classnames/bind'
 import styles from './Mall.module.scss'
 import { Container, Carousel } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { ArrowRightIcon } from '@/components/Icons'
+import { ArrowRightIcon } from '@/components/Icons/Icons'
 import { carouselMall, trademarkList } from '@/data'
-import ArrowNext from '@/components/ArrowNext'
-import ArrowPrev from '@/components/ArrowPrev'
+import ArrowNext from '@/components/ArrowNext/ArrowNext'
+import ArrowPrev from '@/components/ArrowPrev/ArrowPrev'
 
 const cx = classNames.bind(styles)
 

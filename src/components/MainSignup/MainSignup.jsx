@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind'
 import styles from './MainSignup.module.scss'
-import FormSignup from '../FormSignup'
+import FormSignup from '../FormSignup/FormSignup'
 
 const cx = classNames.bind(styles)
 

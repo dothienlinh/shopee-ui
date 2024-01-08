@@ -2,7 +2,7 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react'
 import classNames from 'classnames/bind'
 import styles from './LanguageMenu.module.scss'
-import Popper from '@/components/Popper'
+import Popper from '@/components/Popper/Popper'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLanguage } from './languageSlice'
 

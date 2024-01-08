@@ -1,4 +1,4 @@
-import * as request from '@/utils'
+import * as request from '@/utils/request'
 
 export const getAProduct = async (idProduct) => {
   try {

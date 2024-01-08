@@ -1,7 +1,7 @@
 import { Container } from 'react-bootstrap'
 import classNames from 'classnames/bind'
 import styles from './ProductList.module.scss'
-import Products from '@/components/Products'
+import Products from '@/components/Products/Products'
 
 const cx = classNames.bind(styles)
 

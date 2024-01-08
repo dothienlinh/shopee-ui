@@ -7,8 +7,8 @@ import {
   RadioGroup,
   Typography
 } from '@mui/material'
-import TextFieldInput from '../TextFieldInput'
-import { ControlContext } from '@/layouts/CheckoutContent'
+import TextFieldInput from '../TextFieldInput/TextFieldInput'
+import { ControlContext } from '@/layouts/CheckoutContent/CheckoutContent'
 
 function FormPaymentMethods() {
   const [isCard, setIsCard] = useState(false)

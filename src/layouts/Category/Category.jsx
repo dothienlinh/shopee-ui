@@ -4,8 +4,8 @@ import classNames from 'classnames/bind'
 import styles from './Category.module.scss'
 import { Container } from 'react-bootstrap'
 import { category } from '@/data'
-import ArrowNext from '@/components/ArrowNext'
-import ArrowPrev from '@/components/ArrowPrev'
+import ArrowNext from '@/components/ArrowNext/ArrowNext'
+import ArrowPrev from '@/components/ArrowPrev/ArrowPrev'
 
 const cx = classNames.bind(styles)
 

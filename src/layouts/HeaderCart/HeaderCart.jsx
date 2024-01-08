@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind'
 import styles from './HeaderCart.module.scss'
-import Search from '@/components/Search'
-import { ShopeeLogo } from '@/components/Icons'
-import NavHeader from '@/layouts/components/NavHeader'
+import Search from '@/components/Search/Search'
+import { ShopeeLogo } from '@/components/Icons/Icons'
+import NavHeader from '@/layouts/components/NavHeader/NavHeader'
 import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 

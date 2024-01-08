@@ -2,7 +2,7 @@
 import { forwardRef, useRef, useImperativeHandle } from 'react'
 import classNames from 'classnames/bind'
 import styles from './ArrowNext.module.scss'
-import { ArrowRightIcon } from '@/components/Icons'
+import { ArrowRightIcon } from '@/components/Icons/Icons'
 
 const cx = classNames.bind(styles)
 

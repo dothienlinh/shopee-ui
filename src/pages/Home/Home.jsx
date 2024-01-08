@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 import classNames from 'classnames/bind'
 import styles from './Home.module.scss'
-import Slider from '@/layouts/Slider'
-import Category from '@/layouts/Category'
-import FlashSale from '@/layouts/FlashSale'
-import Mall from '@/layouts/Mall'
-import TopSearch from '@/layouts/TopSearch'
-import ProductList from '@/layouts/ProductList'
-import Footer from '@/layouts/Footer'
+import Slider from '@/layouts/Slider/Slider'
+import Category from '@/layouts/Category/Category'
+import FlashSale from '@/layouts/FlashSale/FlashSale'
+import Mall from '@/layouts/Mall/Mall'
+import TopSearch from '@/layouts/TopSearch/TopSearch'
+import ProductList from '@/layouts/ProductList/ProductList'
+import Footer from '@/layouts/Footer/Footer'
 
 const cx = classNames.bind(styles)
 

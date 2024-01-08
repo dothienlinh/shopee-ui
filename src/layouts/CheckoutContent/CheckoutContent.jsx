@@ -5,11 +5,11 @@ import { Box, Button, Grid } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import FormPersonalInfo from '@/components/FormPersonalInfo'
-import FormShippingAddress from '@/components/FormShippingAddress'
+import FormPersonalInfo from '@/components/FormPersonalInfo/FormPersonalInfo'
+import FormShippingAddress from '@/components/FormShippingAddress/FormShippingAddress'
 import { createContext } from 'react'
-import FormVoucher from '@/components/FormVoucher'
-import FormPaymentMethods from '@/components/FormPaymentMethods'
+import FormVoucher from '@/components/FormVoucher/FormVoucher'
+import FormPaymentMethods from '@/components/FormPaymentMethods/FormPaymentMethods'
 
 const cx = classNames.bind(styles)
 

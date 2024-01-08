@@ -1,12 +1,12 @@
 import classNames from 'classnames/bind'
 import styles from './Profile.module.scss'
 import { Container } from 'react-bootstrap'
-import UserAccountMenu from '@/components/UserAccountMenu'
+import UserAccountMenu from '@/components/UserAccountMenu/UserAccountMenu'
 import { useCookies } from 'react-cookie'
 import { useEffect, useRef, useState } from 'react'
 import { getASingleUser } from '@/apiServices'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
-import { ArrowDownIcon, UpdateSuccessfullyIcon } from '@/components/Icons'
+import { ArrowDownIcon, UpdateSuccessfullyIcon } from '@/components/Icons/Icons'
 
 const cx = classNames.bind(styles)
 

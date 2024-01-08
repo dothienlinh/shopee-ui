@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind'
 import styles from './ProductFlashSale.module.scss'
 import { Link } from 'react-router-dom'
-import { FlashIcon } from '@/components/Icons'
+import { FlashIcon } from '@/components/Icons/Icons'
 
 const cx = classNames.bind(styles)
 

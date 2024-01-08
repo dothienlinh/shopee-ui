@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind'
 import styles from './HeaderLogin.module.scss'
 import { Container } from 'react-bootstrap'
-import { ShopeeLogo } from '@/components/Icons'
+import { ShopeeLogo } from '@/components/Icons/Icons'
 import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles)

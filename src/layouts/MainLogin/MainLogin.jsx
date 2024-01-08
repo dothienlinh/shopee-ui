@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind'
 import styles from './MainLogin.module.scss'
-import FormLogin from '@/components/FormLogin'
+import FormLogin from '@/components/FormLogin/FormLogin'
 import { useState } from 'react'
-import QRCodeLogin from '@/components/QRCodeLogin'
+import QRCodeLogin from '@/components/QRCodeLogin/QRCodeLogin'
 
 const cx = classNames.bind(styles)
 

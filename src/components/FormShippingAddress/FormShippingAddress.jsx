@@ -5,9 +5,9 @@ import {
   getProvince,
   getWards
 } from '../../apiServices/getAddressServices'
-import { ControlContext } from '@/layouts/CheckoutContent'
+import { ControlContext } from '@/layouts/CheckoutContent/CheckoutContent'
 import { Box, Grid, Typography } from '@mui/material'
-import TextFieldInput from '../TextFieldInput'
+import TextFieldInput from '../TextFieldInput/TextFieldInput'
 
 function FormShippingAddress() {
   const [conscious, setConscious] = useState([])

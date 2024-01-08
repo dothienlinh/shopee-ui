@@ -2,18 +2,18 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import classNames from 'classnames/bind'
 import styles from './FormLogin.module.scss'
-import Popper from '@/components/Popper'
+import Popper from '@/components/Popper/Popper'
 import {
   QRCodeIcon,
   ClosedEyeIcon,
   OpenEyeIcon,
   CloseIcon
-} from '@/components/Icons'
+} from '@/components/Icons/Icons'
 import { loginServices } from '@/apiServices'
 import { useDispatch } from 'react-redux'
 import { addAuth } from './authSlice'
 import { useCookies } from 'react-cookie'
-import Loading from '../Loading'
+import Loading from '../Loading/Loading'
 
 const cx = classNames.bind(styles)
 

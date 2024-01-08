@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind'
 import styles from './Checkout.module.scss'
-import HeaderCart from '@/layouts/HeaderCart'
-import CheckoutContent from '@/layouts/CheckoutContent'
+import HeaderCart from '@/layouts/HeaderCart/HeaderCart'
+import CheckoutContent from '@/layouts/CheckoutContent/CheckoutContent'
 import { useEffect } from 'react'
 
 const cx = classNames.bind(styles)

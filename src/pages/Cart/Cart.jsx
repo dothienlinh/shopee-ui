@@ -13,12 +13,12 @@ import {
   discountedPrice,
   deleteMultipleProducts
 } from '../../components/CartMenu/cartSlice'
-import CartPageItem from '@/components/CartPageItem'
-import Button from '@/components/Button'
+import CartPageItem from '@/components/CartPageItem/CartPageItem'
+import Button from '@/components/Button/Button'
 import Checkbox from '@mui/material/Checkbox'
 import { FormControlLabel } from '@mui/material'
-import ModalCartPage from '@/components/ModalCartPage'
-import ModalBuyNow from '@/components/ModalBuyNow'
+import ModalCartPage from '@/components/ModalCartPage/ModalCartPage'
+import ModalBuyNow from '@/components/ModalBuyNow/ModalBuyNow'
 import HeaderCart from '../../layouts/HeaderCart/HeaderCart'
 
 const cx = classNames.bind(styles)

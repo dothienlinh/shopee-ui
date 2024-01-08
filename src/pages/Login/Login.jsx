@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind'
 import styles from './Login.module.scss'
-import HeaderLogin from '@/layouts/HeaderLogin'
-import MainLogin from '@/layouts/MainLogin'
+import HeaderLogin from '@/layouts/HeaderLogin/HeaderLogin'
+import MainLogin from '@/layouts/MainLogin/MainLogin'
 import { useEffect } from 'react'
 
 const cx = classNames.bind(styles)

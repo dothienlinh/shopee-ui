@@ -10,11 +10,11 @@ import {
   HelpIcon,
   ChevronDownIcon,
   LanguageIcon
-} from '@/components/Icons'
-import Popper from '@/components/Popper'
-import NotificationMenu from '@/components/NotificationMenu'
-import LanguageMenu from '@/components/LanguageMenu'
-import MenuUser from '@/components/MenuUser'
+} from '@/components/Icons/Icons'
+import Popper from '@/components/Popper/Popper'
+import NotificationMenu from '@/components/NotificationMenu/NotificationMenu'
+import LanguageMenu from '@/components/LanguageMenu/LanguageMenu'
+import MenuUser from '@/components/MenuUser/MenuUser'
 import { useDispatch, useSelector } from 'react-redux'
 import { useCookies } from 'react-cookie'
 import { addAuth } from '../../../components/FormLogin/authSlice'

@@ -1,5 +1,5 @@
-import FooterMain from '../Footer/FooterMain'
-import Header from '../components/Header'
+import FooterMain from '../Footer/FooterMain/FooterMain'
+import Header from '../components/Header/Header'
 
 function DefaultLayout({ children, defaultHeader, defaultFooter }) {
   return (

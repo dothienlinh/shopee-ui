@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom'
 import classNames from 'classnames/bind'
 import styles from './FlashSale.module.scss'
 import { Container } from 'react-bootstrap'
-import CountDown from '@/components/CountDown'
-import { ArrowRightIcon } from '@/components/Icons'
-import ArrowNext from '@/components/ArrowNext'
-import ArrowPrev from '@/components/ArrowPrev'
+import CountDown from '@/components/CountDown/CountDown'
+import { ArrowRightIcon } from '@/components/Icons/Icons'
+import ArrowNext from '@/components/ArrowNext/ArrowNext'
+import ArrowPrev from '@/components/ArrowPrev/ArrowPrev'
 import { useEffect, useRef, useState } from 'react'
 import { getProductsServices } from '@/apiServices'
-import ProductFlashSale from '@/components/ProductFlashSale'
+import ProductFlashSale from '@/components/ProductFlashSale/ProductFlashSale'
 
 const cx = classNames.bind(styles)
 

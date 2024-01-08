@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind'
 import styles from './AccountPayment.module.scss'
-import UserAccountMenu from '@/components/UserAccountMenu'
+import UserAccountMenu from '@/components/UserAccountMenu/UserAccountMenu'
 import { Container } from 'react-bootstrap'
-import { PlusIcon, ProtectIcon, HelpCVVIcon } from '@/components/Icons'
-import CustomizationInput from '@/components/CustomizationInput'
+import { PlusIcon, ProtectIcon, HelpCVVIcon } from '@/components/Icons/Icons'
+import CustomizationInput from '@/components/CustomizationInput/CustomizationInput'
 import { useRef, useState } from 'react'
 
 const cx = classNames.bind(styles)

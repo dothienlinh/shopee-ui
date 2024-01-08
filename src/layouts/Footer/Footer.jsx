@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind'
 import styles from './Footer.module.scss'
-import FooterSection from './FooterSection'
-import FooterCategory from './FooterCategory'
-import FooterMain from './FooterMain'
+import FooterSection from './FooterSection/FooterSection'
+import FooterCategory from './FooterCategory/FooterCategory'
+import FooterMain from './FooterMain/FooterMain'
 
 const cx = classNames.bind(styles)
 
